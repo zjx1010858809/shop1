@@ -1,0 +1,49 @@
+.all2{
+	width: 1065px;
+	height: 60px;
+	background: #FFFFFF;
+	box-shadow: 4px 1px 23px 0px #D2D2D2;
+	margin: 10px 0  50px 0;
+}
+.all2 input{
+	vertical-align: middle;
+	margin-left: 20px;
+}
+.all2 span{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	line-height: 60px;
+	color: #666666;
+}
+.all2 .s1{
+	margin-left: 3px;
+}
+.all2 .s2{
+	margin-left: 80px;
+}
+.all2 .s3{
+	margin-left: 365px;
+}
+.all2 .s4{
+	margin-left: 5px;
+	color: #D63A3B;
+}
+.all2 .s5{
+	margin-left: 5px;
+}
+.all2 .s6{
+	margin-left: 100px;
+}
+.all2 .s7{
+	color: #D63A3B;
+}
+.all2 .s8{
+	display: inline-block;
+	width: 100px;
+	height:60px;
+	background: #D63A3B;
+	margin-left: 46px;
+	font-size: 16px;
+	color: #FFFFFF;
+	text-align: center;
+}

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta name="keywords" content="" />
-<script>
+<!-- <script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
@@ -16,7 +16,7 @@
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
-	</script>
+	</script> -->
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
 <link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -32,13 +32,18 @@
 	media="screen" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <link href="css/fontawesome-all.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700"
-	rel="stylesheet">
-<link
-	href="http://fonts.googleapis.com/css?
-
-family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
-	rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+	
+	<script type="text/javascript">
+	    function myshopcar(id) {
+	    	if(id==null){
+	    		alert("请先登录");
+	    	}else{
+	    		location.href='myshopcar?id='+id;
+	    	}
+		}
+	    </script>
 </head>
 
 <body>
@@ -54,8 +59,11 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 					</ul>
 				</div>
 				<div class="col-md-6 logo-w3layouts text-center">
+				
+				<a>${sessionScope.user.email}</a>
+				
 					<h1 class="logo-w3layouts">
-						<a class="navbar-brand" href="#">
+						<a class="navbar-brand" href="product_index">
 							JiaXiangShop </a>
 					</h1>
 				</div>
@@ -70,14 +78,10 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 						</li>
 <!-- 购物车 -->
 						<li class="galssescart galssescart2 cart cart box_1">
-							<form action="#" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="display" value="1">
-								<button class="top_googles_cart" type="submit" name="submit" value="">
+								<button class="top_googles_cart" onclick="myshopcar(${sessionScope.user.id});" type="button">
 									我的购物车
 									<i class="fas fa-cart-arrow-down"></i>
 								</button>
-							</form>
 						</li>
 					</ul>
 					
@@ -90,18 +94,18 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 						<div class="wrap">
 							<h5 class="text-center mb-4">登录</h5>
 							<div class="login p-5 bg-dark mx-auto mw-100">
-								<form action="#" method="post">
+								<form id="user_login">
 									<div class="form-group">
 										<label class="mb-2">账号</label>
-										<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+										<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
 										<small id="emailHelp" class="form-text text-muted">我们永远不会泄露您的个人信息</small>
 									</div>
 									<div class="form-group">
 										<label class="mb-2">密码</label>
-										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+										<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
 									</div>
 									
-									<button type="submit" class="btn btn-primary submit mb-4">登录</button>
+									<button type="button" onclick="login();" class="btn btn-primary submit mb-4">登录</button>
 									<button type="button" class="btn btn-primary submit mb-4">注册</button>
 									<a href="#" id="emailHelp" class="form-text text-muted">忘记密码？</a>
 
@@ -233,7 +237,7 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 							<div class="flexslider1">
 								<ul class="slides">
 								<c:forEach items="${single.piclist}" var="p" varStatus="v">
-									<li data- thumb="${p}">
+									<li data-thumb="${p}">
 										<div class="thumb-image">
 											<img src="${p}" data-imagezoom="true"
 												class="img-fluid" alt=" ">
@@ -253,20 +257,21 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 							<del>${single.price}</del>
 						</p>
 						<div class="rating1">
-							活动 ：<a style="color: navy;">${single.activity}</a>
+							活动 :<a style="color: navy;">${single.activity}</a>
 						</div>
 						<div class="description">
 							
-							<form action="#" method="post">
+							<!-- <form action="#" method="post">
 								<input class="form-control" type="text" name="Email"
 									placeholder="请输入收货地址..." required=""> <input
 									type="submit" value="确定">
-							</form>
+							</form> -->
 						</div>
 						<div class="color-quality">
 							<div class="color-quality-right">
 								<h5>数量 :</h5>
-								<input name="add" type="number" value="1">
+								<input class="pid" type="hidden" name="id" value="${single.id}">
+								<input class="pcount" name="count" type="number" value="1">
 							</div>
 						</div>
 						<div class="occasional">
@@ -287,13 +292,7 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 						</div>
 						<div class="occasion-cart">
 							<div class="googles single-item singlepage">
-								<form action="#" method="post">
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="googles_item" value="${single.fullname}">
-									<input type="hidden" name="amount" value="${single.nowprice}">
-									<button type="submit" class="googles-cart pgoogles-cart">添加到购物车</button>
-								</form>
-
+							<button onclick="incar();" type="button" style="background-color: #DF3033;color: white;" class="googles-cart">加入购物车</button>
 							</div>
 						</div>
 						<ul class="footer-social text-left mt-lg-4 mt-3">
@@ -575,678 +574,14 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 								</div>
 							</div>
 						</div>
-						<div class="item">
-							<div class="gd-box-info text-center">
-								<div class="product-men women_two bot-gd">
-									<div class="product-googles-info slide-img googles">
-										<div class="men-pro-item">
-											<div class="men-thumb-item">
-												<img src="images/s6.jpg" class="img-fluid" alt="">
-												<div class="men-cart-pro">
-
-
-													<div class="inner-men-cart-pro">
-
-
-														<a href="single.html" class="link-product-add-cart">Quick
-															View</a>
-
-
-													</div>
-												</div>
-												<span class="product-new-top">New</span>
-											</div>
-											<div class="item-info-product">
-
-												<div class="info-product-price">
-
-
-													<div class="grid_meta">
-
-
-														<div class="product_price">
-
-
-															<h4>
-
-
-																<a href="single.html">MARTIN Aviator </a>
-
-
-															</h4>
-
-
-															<div class="grid-price mt-2">
-
-
-																<span class="money ">$425.00</span>
-
-
-															</div>
-
-
-														</div>
-
-
-														<ul class="stars">
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-half-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-														</ul>
-
-
-													</div>
-
-
-													<div class="googles single-item hvr-outline-out">
-
-
-														<form action="#" method="post">
-
-
-															<input type="hidden" name="cmd" value="_cart"> <input
-																type="hidden" name="add" value="1"> <input
-																type="hidden" name="googles_item" value="MARTIN Aviator">
-
-
-															<input type="hidden" name="amount" value="425.00">
-
-
-															<button type="submit" class="googles-cart pgoogles-cart">
-
-
-																<i class="fas fa-cart-plus"></i>
-
-
-															</button>
-
-
-														</form>
-
-
-
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="gd-box-info text-center">
-								<div class="product-men women_two bot-gd">
-									<div class="product-googles-info slide-img googles">
-										<div class="men-pro-item">
-											<div class="men-thumb-item">
-												<img src="images/s7.jpg" class="img-fluid" alt="">
-												<div class="men-cart-pro">
-
-
-													<div class="inner-men-cart-pro">
-
-
-														<a href="single.html" class="link-product-add-cart">Quick
-															View</a>
-
-
-													</div>
-												</div>
-												<span class="product-new-top">New</span>
-											</div>
-											<div class="item-info-product">
-
-												<div class="info-product-price">
-
-
-													<div class="grid_meta">
-
-
-														<div class="product_price">
-
-
-															<h4>
-
-
-																<a href="single.html">Royal Son Aviator </a>
-
-
-															</h4>
-
-
-															<div class="grid-price mt-2">
-
-
-																<span class="money ">$425.00</span>
-
-
-															</div>
-
-
-														</div>
-
-
-														<ul class="stars">
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-half-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-														</ul>
-
-
-													</div>
-
-
-													<div class="googles single-item hvr-outline-out">
-
-
-														<form action="#" method="post">
-
-
-															<input type="hidden" name="cmd" value="_cart"> <input
-																type="hidden" name="add" value="1"> <input
-																type="hidden" name="googles_item"
-																value="Royal Son Aviator"> <input type="hidden"
-																name="amount" value="425.00">
-
-
-															<button type="submit" class="googles-cart pgoogles-cart">
-
-
-																<i class="fas fa-cart-plus"></i>
-
-
-															</button>
-
-
-														</form>
-
-
-
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="gd-box-info text-center">
-								<div class="product-men women_two bot-gd">
-									<div class="product-googles-info slide-img googles">
-										<div class="men-pro-item">
-											<div class="men-thumb-item">
-												<img src="images/s8.jpg" class="img-fluid" alt="">
-												<div class="men-cart-pro">
-
-
-													<div class="inner-men-cart-pro">
-
-
-														<a href="single.html" class="link-product-add-cart">Quick
-															View</a>
-
-
-													</div>
-												</div>
-												<span class="product-new-top">New</span>
-											</div>
-											<div class="item-info-product">
-
-												<div class="info-product-price">
-
-
-													<div class="grid_meta">
-
-
-														<div class="product_price">
-
-
-															<h4>
-
-
-																<a href="single.html">Irayz Butterfly </a>
-
-
-															</h4>
-
-
-															<div class="grid-price mt-2">
-
-
-																<span class="money ">$281.00</span>
-
-
-															</div>
-
-
-														</div>
-
-
-														<ul class="stars">
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-half-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-														</ul>
-
-
-													</div>
-
-
-													<div class="googles single-item hvr-outline-out">
-
-
-														<form action="#" method="post">
-
-
-															<input type="hidden" name="cmd" value="_cart"> <input
-																type="hidden" name="add" value="1"> <input
-																type="hidden" name="googles_item"
-																value="Irayz Butterfly"> <input type="hidden"
-																name="amount" value="281.00">
-
-
-															<button type="submit" class="googles-cart pgoogles-cart">
-
-
-																<i class="fas fa-cart-plus"></i>
-
-
-															</button>
-
-
-														</form>
-
-
-
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="gd-box-info text-center">
-								<div class="product-men women_two bot-gd">
-									<div class="product-googles-info slide-img googles">
-										<div class="men-pro-item">
-											<div class="men-thumb-item">
-												<img src="images/s9.jpg" class="img-fluid" alt="">
-												<div class="men-cart-pro">
-
-
-													<div class="inner-men-cart-pro">
-
-
-														<a href="single.html" class="link-product-add-cart">Quick
-															View</a>
-
-
-													</div>
-												</div>
-												<span class="product-new-top">New</span>
-											</div>
-											<div class="item-info-product">
-
-												<div class="info-product-price">
-
-
-													<div class="grid_meta">
-
-
-														<div class="product_price">
-
-
-															<h4>
-
-
-																<a href="single.html">Jerry Rectangular </a>
-
-
-															</h4>
-
-
-															<div class="grid-price mt-2">
-
-
-																<span class="money ">$525.00</span>
-
-
-															</div>
-
-
-														</div>
-
-
-														<ul class="stars">
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-half-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-														</ul>
-
-
-													</div>
-
-
-													<div class="googles single-item hvr-outline-out">
-
-
-														<form action="#" method="post">
-
-
-															<input type="hidden" name="cmd" value="_cart"> <input
-																type="hidden" name="add" value="1"> <input
-																type="hidden" name="googles_item"
-																value="Jerry Rectangular "> <input type="hidden"
-																name="amount" value="525.00">
-
-
-															<button type="submit" class="googles-cart pgoogles-cart">
-
-
-																<i class="fas fa-cart-plus"></i>
-
-
-															</button>
-
-
-														</form>
-
-
-
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="gd-box-info text-center">
-								<div class="product-men women_two bot-gd">
-									<div class="product-googles-info slide-img googles">
-										<div class="men-pro-item">
-											<div class="men-thumb-item">
-												<img src="images/s10.jpg" class="img-fluid" alt="">
-												<div class="men-cart-pro">
-
-
-													<div class="inner-men-cart-pro">
-
-
-														<a href="single.html" class="link-product-add-cart">Quick
-															View</a>
-
-
-													</div>
-												</div>
-												<span class="product-new-top">New</span>
-											</div>
-											<div class="item-info-product">
-
-												<div class="info-product-price">
-
-
-													<div class="grid_meta">
-
-
-														<div class="product_price">
-
-
-															<h4>
-
-
-																<a href="single.html">Herdy Wayfarer </a>
-
-
-															</h4>
-
-
-															<div class="grid-price mt-2">
-
-
-																<span class="money ">$325.00</span>
-
-
-															</div>
-
-
-														</div>
-
-
-														<ul class="stars">
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-half-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-															<li><a href="#"> <i class="fa fa-star-o"
-																	aria-hidden="true"></i>
-
-
-															</a></li>
-
-
-														</ul>
-
-
-													</div>
-
-
-													<div class="googles single-item hvr-outline-out">
-
-
-														<form action="#" method="post">
-
-
-															<input type="hidden" name="cmd" value="_cart"> <input
-																type="hidden" name="add" value="1"> <input
-																type="hidden" name="googles_item"
-																value="Royal Son Aviator"> <input type="hidden"
-																name="amount" value="425.00">
-
-
-															<button type="submit" class="googles-cart pgoogles-cart">
-
-
-																<i class="fas fa-cart-plus"></i>
-
-
-															</button>
-
-
-
-
-
-
-														</form>
-
-
-
-													</div>
-												</div>
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
 			<!--//slider-->
 		</div>
 	</section>
-	<!--footer -->
+<!--footer -->
 	<footer class="py-lg-5 py-3">
 		<div class="container-fluid px-lg-5 px-3">
 			<div class="row footer-top-w3layouts">
@@ -1359,19 +694,35 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 			});
 		</script>
 	<!-- //cart-js -->
-	<script>
-			$(document).ready(function () {
-				$(".button-log a").click(function () {
-					$(".overlay-login").fadeToggle(200);
-					$(this).toggleClass('btn-open').toggleClass('btn-close');
-				});
-			});
-			$('.overlay-close1').on('click', function () {
+<!-- 登录 -->	
+<script>
+		$(document).ready(function () {
+			$(".button-log a").click(function () {
 				$(".overlay-login").fadeToggle(200);
-				$(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
-				open = false;
+				$(this).toggleClass('btn-open').toggleClass('btn-close');
 			});
-		</script>
+		});
+		$('.overlay-close1').on('click', function () {
+			$(".overlay-login").fadeToggle(200);
+			$(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
+			open = false;
+		});
+		function login() {
+			$.ajax({
+				url:"user_login",
+				data:$("#user_login").serialize(),
+				type:"post",
+				success:function(json){
+					if(json.c==0){
+						alert(json.msString);
+					}else
+						if(json.c==1){
+							location.href="product_index";
+						};
+				}
+			});
+		}
+	</script>
 	<!-- carousel -->
 	<!-- price range (top products) -->
 	<script src="js/jquery-ui.js"></script>
@@ -1387,15 +738,14 @@ family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,80
 						$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
 					}
 				});
-				$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-
-
-range").slider("values", 1));
-
+				$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
 			}); //]]>
 		</script>
 	<!-- //price range (top products) -->
 
 	<script src="js/owl.carousel.js"></script>
+	
+<!-- 猜你喜欢 -->
 	<script>
 			$(document).ready(function () {
 				$('.owl-carousel').owlCarousel({
@@ -1433,6 +783,8 @@ range").slider("values", 1));
 	<!-- single -->
 	<!-- script for responsive tabs -->
 	<script src="js/easy-responsive-tabs.js"></script>
+	
+<!-- 商品详情/规格/评价 -->
 	<script>
 			$(document).ready(function () {
 				$('#horizontalTab').easyResponsiveTabs({
@@ -1455,7 +807,7 @@ range").slider("values", 1));
 				});
 			});
 		</script>
-	<!-- FlexSlider -->
+<!--图片滑块 -->
 	<script src="js/jquery.flexslider.js"></script>
 	<script>
 			// Can also be used with $(document).ready()
@@ -1466,9 +818,9 @@ range").slider("values", 1));
 				});
 			});
 		</script>
-	<!-- //FlexSlider-->
+<!-- //图片滑块-->
 
-	<!-- dropdown nav -->
+<!-- 下拉菜单 -->
 	<script>
 			$(document).ready(function () {
 				$(".dropdown").hover(
@@ -1483,7 +835,7 @@ range").slider("values", 1));
 				);
 			});
 		</script>
-	<!-- //dropdown nav -->
+<!-- //下拉菜单 -->
 	<script src="js/move-top.js"></script>
 	<script src="js/easing.js"></script>
 	<script>
@@ -1514,7 +866,27 @@ range").slider("values", 1));
         });
     </script>
 	<!--// end-smoth-scrolling -->
-
+<!-- 加入购物车 -->
+<script type="text/javascript">
+function incar() {
+	var product_id=$(".pid").val();
+	var count=$(".pcount").val();
+	$.ajax({
+		url:"incar",
+		data:{product_id:product_id,count:count},
+		dataType:'json',
+		type:'post',
+		success:function(res){
+			if(res.c==0){
+				alert(res.msString);
+			}else
+				if(res.c==1){
+					alert(res.msString);
+				}
+		}
+	});
+}
+</script>
 
 	<script src="js/bootstrap.js"></script>
 	<!-- js file -->

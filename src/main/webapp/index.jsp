@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="" />
+	<!--返回时停留在之前浏览位置，有了这个可以清楚位置-->
 	<!-- <script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -28,6 +29,15 @@
 	<link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
+	    <script type="text/javascript">
+	    function myshopcar(id) {
+	    	if(id==null){
+	    		alert("请先登录");
+	    	}else{
+	    		location.href='myshopcar?id='+id;
+	    	}
+		}
+	    </script>
 </head>
 
 <body>
@@ -44,6 +54,9 @@
 					</ul>
 				</div>
 				<div class="col-md-6 logo-w3layouts text-center">
+				
+				<a>${sessionScope.user.email}</a>
+				
 					<h1 class="logo-w3layouts">
 						<a class="navbar-brand" href="product_index">
 							JiaXiangShop </a>
@@ -60,14 +73,10 @@
 						</li>
 <!-- 购物车 -->
 						<li class="galssescart galssescart2 cart cart box_1">
-							<form action="#" method="post" class="last">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="display" value="1">
-								<button class="top_googles_cart" type="submit" name="submit" value="">
+								<button class="top_googles_cart" onclick="myshopcar(${sessionScope.user.id});" type="button">
 									我的购物车
 									<i class="fas fa-cart-arrow-down"></i>
 								</button>
-							</form>
 						</li>
 					</ul>
 					
@@ -80,18 +89,18 @@
 						<div class="wrap">
 							<h5 class="text-center mb-4">登录</h5>
 							<div class="login p-5 bg-dark mx-auto mw-100">
-								<form action="#" method="post">
+								<form id="user_login">
 									<div class="form-group">
 										<label class="mb-2">账号</label>
-										<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+										<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
 										<small id="emailHelp" class="form-text text-muted">我们永远不会泄露您的个人信息</small>
 									</div>
 									<div class="form-group">
 										<label class="mb-2">密码</label>
-										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+										<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
 									</div>
 									
-									<button type="submit" class="btn btn-primary submit mb-4">登录</button>
+									<button type="button" onclick="login();" class="btn btn-primary submit mb-4">登录</button>
 									<button type="button" class="btn btn-primary submit mb-4">注册</button>
 									<a href="#" id="emailHelp" class="form-text text-muted">忘记密码？</a>
 
@@ -258,56 +267,7 @@
 			<div class="inner-sec-shop px-lg-4 px-3">
 			
 <!-- 商品列表 -->
-				<h3 class="tittle-w3layouts my-lg-4 my-4">眼镜</h3>
-				<div class="row">
-					<!-- /womens -->
-					<div class="col-md-3 product-men women_two">
-						<div class="product-googles-info googles">
-							<div class="men-pro-item">
-							
-								<div class="men-thumb-item">
-									<img src="images/s1.jpg" class="img-fluid" alt="">
-									<div class="men-cart-pro">
-										<div class="inner-men-cart-pro">
-											<a href="product_single?id=1" class="link-product-add-cart">Quick View</a>
-										</div>
-									</div>
-								</div>
-								
-								<div class="item-info-product">
-									<div class="info-product-price">
-										<div class="grid_meta">
-											<div class="product_price">
-												<h4>
-													<a href="single.jsp">商品名</a>
-												</h4>
-												<div class="grid-price mt-2">
-													<span class="money ">$现价</span>
-												</div>
-											</div>
-										</div>
-										<div class="googles single-item hvr-outline-out">
-											<form action="#" method="post">
-												<!-- <input type="hidden" name="cmd" value="_cart"> -->
-												<input type="hidden" name="add" value="1">
-												<input type="hidden" name="googles_item" value="Farenheit">
-												<input type="hidden" name="amount" value="1115.00">
-												<button type="submit" class="googles-cart pgoogles-cart">
-													<i class="fas fa-cart-plus"></i>
-												</button>
-											</form>
-
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-<!-- 商品列表 -->
-				<h3 class="tittle-w3layouts my-lg-4 my-4">手机</h3>
+				<h3 class="tittle-w3layouts my-lg-4 my-4">新品上市</h3>
 				<div class="row">
 					<!-- /womens -->
 					<c:forEach items="${productlist}" var="r">
@@ -337,16 +297,11 @@
 											</div>
 										</div>
 										<div class="googles single-item hvr-outline-out">
-											<form action="#" method="post">
-												<input type="hidden" name="cmd" value="_cart">
-												<!-- <input type="hidden" name="add" value="1"> -->
-												<input type="hidden" name="googles_item" value="${r.fullname}">
-												<input type="hidden" name="amount" value="${r.nowprice}">
-												<button type="submit" class="googles-cart pgoogles-cart">
+											<input class="pid" type="hidden" name="product_id" value="${r.id}">
+											<input class="pcount" name="count" type="hidden" value="1">
+												<button onclick="incar();" type="button" class="googles-cart pgoogles-cart">
 													<i class="fas fa-cart-plus"></i>
 												</button>
-											</form>
-
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -1120,6 +1075,8 @@
 		});
 	</script>
 	<!-- //cart-js -->
+	
+<!-- 登录 -->	
 	<script>
 		$(document).ready(function () {
 			$(".button-log a").click(function () {
@@ -1132,6 +1089,21 @@
 			$(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
 			open = false;
 		});
+		function login() {
+			$.ajax({
+				url:"user_login",
+				data:$("#user_login").serialize(),
+				type:"post",
+				success:function(json){
+					if(json.c==0){
+						alert(json.msString);
+					}else
+						if(json.c==1){
+							location.href="product_index";
+						};
+				}
+			});
+		}
 	</script>
 <!-- 旋转 -->
 <!-- 倒计时 -->
@@ -1225,6 +1197,30 @@
 
         });
     </script>
+    
+<!-- 加入购物车 -->
+<script type="text/javascript">
+function incar() {
+	var product_id=$(".pid").val();
+	var count=$(".pcount").val();
+	$.ajax({
+		url:"incar",
+		data:{product_id:product_id,count:count},
+		dataType:'json',
+		type:'post',
+		success:function(res){
+			if(res.c==0){
+				alert(res.msString);
+			}else
+				if(res.c==1){
+					alert(res.msString);
+				}
+		}
+	});
+}
+</script>
+    
+    
     <!--// end-smoth-scrolling -->
 
 	<script src="js/bootstrap.js"></script>
