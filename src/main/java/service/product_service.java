@@ -9,5 +9,7 @@ public interface product_service {
 	public List<product> selectall();
 	
 	public product selectbyid(int id);
+	
+	public List<product> selectbytype(int id);
 
 }

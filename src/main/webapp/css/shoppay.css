@@ -22,7 +22,7 @@
 	margin-left: 80px;
 }
 .all2 .s3{
-	margin-left: 365px;
+	margin-left: 350px;
 }
 .all2 .s4{
 	margin-left: 5px;
@@ -42,7 +42,7 @@
 	width: 100px;
 	height:60px;
 	background: #D63A3B;
-	margin-left: 46px;
+	float:right;
 	font-size: 16px;
 	color: #FFFFFF;
 	text-align: center;

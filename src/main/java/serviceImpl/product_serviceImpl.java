@@ -21,4 +21,8 @@ public class product_serviceImpl implements product_service {
 		return dao.selectbyid(id);
 	}
 
+	public List<product> selectbytype(int id) {
+		return dao.selectbytype(id);
+	}
+
 }

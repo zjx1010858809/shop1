@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 import util.Md5Utils;
 	
@@ -10,9 +9,9 @@ public class user implements Serializable{
 	private String email;
 	private String password;
 	private String tel;
-	private int level;
-	private double amount;
-	private int status;
+	private int level=1;
+	private double amount=0;
+	private int status=0;
 	private String comments ="";
 	private String[] statuss= {"正常","封号"};
 	

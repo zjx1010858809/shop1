@@ -27,6 +27,26 @@ public class user_serviceImpl implements user_service{
 		dao.incar(sh);
 	}
 
+	public int outcar(int id) {
+		return dao.outcar(id);
+	}
+
+	public int changercount(shopcar sh) {
+		return dao.changercount(sh);
+	}
+
+	public int register(user u) {
+		return dao.register(u);
+	}
+
+	public int pselect(int id) {
+		return dao.pselect(id);
+	}
+
+	public void delshopcar(int id) {
+		dao.delshopcar(id);
+	}
+
 	
 	
 }

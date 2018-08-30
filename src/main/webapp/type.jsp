@@ -91,10 +91,10 @@
 			<div class="inner-sec-shop px-lg-4 px-3">
 			
 <!-- 商品列表 -->
-				<h3 class="tittle-w3layouts my-lg-4 my-4">全部商品</h3>
+				<h3 class="tittle-w3layouts my-lg-4 my-4">${typename.name}</h3>
 				<div class="row">
 					<!-- /womens -->
-					<c:forEach items="${productlist}" var="r">
+					<c:forEach items="${producttypelist}" var="r">
 					<div class="col-md-3 product-men women_two" style="margin-top: 10px;">
 						<div class="product-googles-info googles">
 							<div class="men-pro-item">

@@ -12,5 +12,15 @@ public interface user_service {
 	public List<shopcar> myshopcar(int id);
 	
 	public void incar(shopcar sh);
+	
+	public int outcar(int id);
+	
+	public int changercount(shopcar sh);
+	
+	public int register(user u);
+	
+	public int pselect(int id);
+	
+	public void delshopcar(int id);
 
 }

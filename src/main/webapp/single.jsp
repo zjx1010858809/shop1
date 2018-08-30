@@ -1,39 +1,19 @@
 <%@ page language="java" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="_header.jsp" %>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
 <title>Single</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="utf-8">
-<meta name="keywords" content="" />
-<!-- <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script> -->
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
-<link href="css/style6.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="css/shop.css" type="text/css" />
-<link rel="stylesheet" href="css/owl.carousel.css" type="text/css"
-	media="all">
-<link rel="stylesheet" href="css/owl.theme.css" type="text/css"
-	media="all">
+<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
-<link href="css/easy-responsive-tabs.css" rel='stylesheet'
-	type='text/css' />
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
+<link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
-<link href="css/fontawesome-all.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 	
 	<script type="text/javascript">
 	    function myshopcar(id) {
@@ -48,165 +28,7 @@
 
 <body>
 	<div class="banner-top container-fluid" id="home">
-		<header>
-			<div class="row">
-				<div class="col-md-3 top-info text-left mt-lg-4">
-					<h6>Need Help</h6>
-					<ul>
-						<li>
-							<i class="fas fa-phone"></i> Call</li>
-						<li class="number-phone mt-3">12345678099</li>
-					</ul>
-				</div>
-				<div class="col-md-6 logo-w3layouts text-center">
-				
-				<a>${sessionScope.user.email}</a>
-				
-					<h1 class="logo-w3layouts">
-						<a class="navbar-brand" href="product_index">
-							JiaXiangShop </a>
-					</h1>
-				</div>
-
-				<div class="col-md-3 top-info-cart text-right mt-lg-4">
-					<ul class="cart-inner-info">
-<!-- 登录按钮 -->
-						<li class="button-log">
-							<a class="btn-open" href="#">
-								<span class="fa fa-user" aria-hidden="true"></span>
-							</a>
-						</li>
-<!-- 购物车 -->
-						<li class="galssescart galssescart2 cart cart box_1">
-								<button class="top_googles_cart" onclick="myshopcar(${sessionScope.user.id});" type="button">
-									我的购物车
-									<i class="fas fa-cart-arrow-down"></i>
-								</button>
-						</li>
-					</ul>
-					
-					
-<!--登录窗口-->
-					<div class="overlay-login text-left">
-						<button type="button" class="overlay-close1">
-							<i class="fa fa-times" aria-hidden="true"></i>
-						</button>
-						<div class="wrap">
-							<h5 class="text-center mb-4">登录</h5>
-							<div class="login p-5 bg-dark mx-auto mw-100">
-								<form id="user_login">
-									<div class="form-group">
-										<label class="mb-2">账号</label>
-										<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
-										<small id="emailHelp" class="form-text text-muted">我们永远不会泄露您的个人信息</small>
-									</div>
-									<div class="form-group">
-										<label class="mb-2">密码</label>
-										<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
-									</div>
-									
-									<button type="button" onclick="login();" class="btn btn-primary submit mb-4">登录</button>
-									<button type="button" class="btn btn-primary submit mb-4">注册</button>
-									<a href="#" id="emailHelp" class="form-text text-muted">忘记密码？</a>
-
-								</form>
-							</div>
-							<!---->
-						</div>
-					</div>
-<!---->
-				</div>
-			</div>
-			
-<!-- 搜索 -->
-			<div class="search">
-				<div class="mobile-nav-button">
-					<button id="trigger-overlay" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
-				<!-- open/close -->
-				<div class="overlay overlay-door">
-					<button type="button" class="overlay-close">
-						<i class="fa fa-times" aria-hidden="true"></i>
-					</button>
-					<form action="#" method="post" class="d-flex">
-						<input class="form-control" type="search" placeholder="Search here..." required="">
-						<button type="submit" class="btn btn-primary submit">
-							<i class="fas fa-search"></i>
-						</button>
-					</form>
-				<!-- open/close -->
-			</div>
-			
-<!-- 导航栏 -->
-			<label class="top-log mx-auto"></label>
-			<nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
-
-				<button class="navbar-toggler mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-				    aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon">
-						
-					</span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav nav-mega mx-auto">
-						<li class="nav-item active">
-							<a class="nav-link ml-lg-0" href="product_index">首页</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-							    aria-expanded="false">
-								分类
-							</a>
-							<ul class="dropdown-menu mega-menu ">
-								<li>
-									<div class="row">
-									
-									
-									<c:forEach items="${typelist}" var="t">
-										<div class="col-md-4 media-list span4 text-left">
-										<c:if test="${t.parentid==0}">
-											<h5 class="tittle-w3layouts-sub">${t.name}</h5>
-											<ul>
-											</c:if>
-											
-											
-											
-											<c:forEach items="${typelist}" var="tt">
-											<c:if test="${tt.parentid==t.id}">
-												<li class="media-mini mt-3">
-													<a href="shop.jsp">${tt.name}</a>
-												</li>
-											</c:if>
-											</c:forEach>
-												
-												
-											<c:if test="${t.parentid==0}">
-											</ul>
-											</c:if>
-											
-											
-										</div>
-										</c:forEach>
-										
-										
-									</div>
-									<hr>
-								</li>
-							</ul>
-						</li>
-						
-						<li class="nav-item">
-							<a class="nav-link" href="contact.jsp">Contact</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="about.jsp">个人中心</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</header>
+		
 <!-- //header -->
 
 
@@ -581,148 +403,11 @@
 			<!--//slider-->
 		</div>
 	</section>
-<!--footer -->
-	<footer class="py-lg-5 py-3">
-		<div class="container-fluid px-lg-5 px-3">
-			<div class="row footer-top-w3layouts">
-				<div class="col-lg-3 footer-grid-w3ls">
-					<div class="footer-title">
-						<h3>About Us</h3>
-					</div>
-					<div class="footer-text">
-						<p>Curabitur non nulla sit amet nislinit tempus convallis quis
-							ac lectus. lac inia eget consectetur sed, convallis at tellus.
-							Nulla porttitor accumsana tincidunt.</p>
-						<ul class="footer-social text-left mt-lg-4 mt-3">
 
-							<li class="mx-2"><a href="#"> <span
-									class="fab fa-facebook-f"></span>
-							</a></li>
-							<li class="mx-2"><a href="#"> <span
-									class="fab fa-twitter"></span>
-							</a></li>
-							<li class="mx-2"><a href="#"> <span
-									class="fab fa-google-plus-g"></span>
-							</a></li>
-							<li class="mx-2"><a href="#"> <span
-									class="fab fa-linkedin-in"></span>
-							</a></li>
-							<li class="mx-2"><a href="#"> <span class="fas fa-rss"></span>
-							</a></li>
-							<li class="mx-2"><a href="#"> <span class="fab fa-vk"></span>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 footer-grid-w3ls">
-					<div class="footer-title">
-						<h3>Get in touch</h3>
-					</div>
-					<div class="contact-info">
-						<h4>Location :</h4>
-						<p>0926k 4th block building, king Avenue, New York City.</p>
-						<div class="phone">
-							<h4>Contact :</h4>
-							<p>Phone : +121 098 8907 9987</p>
-							<p>
-								Email : <a href="mailto:info@example.com">info@example.com</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 footer-grid-w3ls">
-					<div class="footer-title">
-						<h3>Quick Links</h3>
-					</div>
-					<ul class="links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="404.html">Error</a></li>
-						<li><a href="shop.html">Shop</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
-					</ul>
-				</div>
-				<div class="col-lg-3 footer-grid-w3ls">
-					<div class="footer-title">
-						<h3>Sign up for your offers</h3>
-					</div>
-					<div class="footer-text">
-						<p>By subscribing to our mailing list you will always get
-							latest news and updates from us.</p>
-						<form action="#" method="post">
-							<input class="form-control" type="email" name="Email"
-								placeholder="Enter your email..." required="">
-							<button class="btn1">
-								<i class="far fa-envelope" aria-hidden="true"></i>
-							</button>
-							<div class="clearfix"></div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="copyright-w3layouts mt-4">
-				<p class="copy-right text-center ">
-					Copyright &copy; 2018.Company name All rights reserved.<a
-						target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-				</p>
-			</div>
-		</div>
-	</footer>
-	<!-- //footer -->
+<%@include file="_footer.jsp" %>
 
-	<!--jQuery-->
-	<script src="js/jquery-2.2.3.min.js"></script>
-	<!-- newsletter modal -->
-	<!--search jQuery-->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<script src="js/classie-search.js"></script>
-	<script src="js/demo1-search.js"></script>
-	<!--//search jQuery-->
-	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
-	<script>
-			googles.render();
+	
 
-			googles.cart.on('googles_checkout', function (evt) {
-				var items, len, i;
-
-				if (this.subtotal() > 0) {
-					items = this.items();
-
-					for (i = 0, len = items.length; i < len; i++) {}
-				}
-			});
-		</script>
-	<!-- //cart-js -->
-<!-- 登录 -->	
-<script>
-		$(document).ready(function () {
-			$(".button-log a").click(function () {
-				$(".overlay-login").fadeToggle(200);
-				$(this).toggleClass('btn-open').toggleClass('btn-close');
-			});
-		});
-		$('.overlay-close1').on('click', function () {
-			$(".overlay-login").fadeToggle(200);
-			$(".button-log a").toggleClass('btn-open').toggleClass('btn-close');
-			open = false;
-		});
-		function login() {
-			$.ajax({
-				url:"user_login",
-				data:$("#user_login").serialize(),
-				type:"post",
-				success:function(json){
-					if(json.c==0){
-						alert(json.msString);
-					}else
-						if(json.c==1){
-							location.href="product_index";
-						};
-				}
-			});
-		}
-	</script>
 	<!-- carousel -->
 	<!-- price range (top products) -->
 	<script src="js/jquery-ui.js"></script>
@@ -820,52 +505,7 @@
 		</script>
 <!-- //图片滑块-->
 
-<!-- 下拉菜单 -->
-	<script>
-			$(document).ready(function () {
-				$(".dropdown").hover(
-					function () {
-						$('.dropdown-menu', this).stop(true, true).slideDown("fast");
-						$(this).toggleClass('open');
-					},
-					function () {
-						$('.dropdown-menu', this).stop(true, true).slideUp("fast");
-						$(this).toggleClass('open');
-					}
-				);
-			});
-		</script>
-<!-- //下拉菜单 -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
-	<script>
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-	<script>
-        $(document).ready(function() {
-            /*
-            						var defaults = {
-            							  containerID: 'toTop', // fading element id
-            							containerHoverID: 'toTopHover', // fading element hover id
-            							scrollSpeed: 1200,
-            							easingType: 'linear' 
-            						 };
-            						*/
 
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-	<!--// end-smoth-scrolling -->
 <!-- 加入购物车 -->
 <script type="text/javascript">
 function incar() {
@@ -888,8 +528,6 @@ function incar() {
 }
 </script>
 
-	<script src="js/bootstrap.js"></script>
-	<!-- js file -->
 </body>
 
 </html>

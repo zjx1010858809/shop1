@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import entity.product;
 import service.product_service;
 import service.type_service;
 
@@ -28,6 +29,14 @@ public class product_controller {
 		mv.put("typelist",tservice.select());
 		mv.put("single",service.selectbyid(id));
 		return "single";
+	}
+	
+	@RequestMapping("product_type")
+	public String selectbytype(Integer id,ModelMap mv) {
+		mv.put("producttypelist",service.selectbytype(id));
+		mv.put("typename",tservice.getByid(id));
+		mv.put("typelist",tservice.select());
+		return "type";
 	}
 
 }
