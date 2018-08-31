@@ -19,8 +19,6 @@ public interface user_service {
 	
 	public int register(user u);
 	
-	public int pselect(int id);
-	
 	public void delshopcar(int id);
 
 }

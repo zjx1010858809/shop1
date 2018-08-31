@@ -6,7 +6,7 @@ public class orders {
 	String code;
 	double amount;
 	double nowamount;
-	int address_id=8;
+	int address_id;
 	int user_id;
 	int status=1;
 	int assessstatus=0;

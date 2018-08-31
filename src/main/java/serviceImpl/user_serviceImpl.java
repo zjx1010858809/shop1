@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.user_dao;
+import entity.product;
 import entity.shopcar;
 import entity.user;
 import service.user_service;
@@ -38,11 +39,7 @@ public class user_serviceImpl implements user_service{
 	public int register(user u) {
 		return dao.register(u);
 	}
-
-	public int pselect(int id) {
-		return dao.pselect(id);
-	}
-
+	
 	public void delshopcar(int id) {
 		dao.delshopcar(id);
 	}

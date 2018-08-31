@@ -5,7 +5,6 @@ public class shopcar {
 	int user_id;
 	int product_id;
 	int count;
-	String email;
 	String fullname;
 	String pics;
 	double nowprice;
@@ -57,12 +56,6 @@ public class shopcar {
 	}
 	public void setCount(int count) {
 		this.count = count;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getFullname() {
 		return fullname;

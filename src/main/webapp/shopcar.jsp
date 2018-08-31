@@ -61,7 +61,7 @@
 						</thead>
 						<tbody>
 						<c:forEach items="${requestScope.myshopcar}" var="r" varStatus="v">
-							<tr class="rem1" myid="${r.id}">
+							<tr class="rem1" myid="${r.id}" proid="${r.product_id}">
 								<td class="invert"><input class="chk" type="checkbox"></td>
 								<td class="invert-image">
 									<a href="product_single">
@@ -229,17 +229,17 @@
 				});
 			}
 		});
-	</script>
-	<script type="text/javascript">
-	
+
+//结算点击事件
    function mysubmit(){
 	   var data=[];
 	   $(".chk").each(function(){
 		   if($(this).prop("checked")){
 			var parent=$(this).parents(".rem1");
 			var id=parseInt(parent.attr("myid"));
+			var product_id=parseInt(parent.attr("proid"));
 			var count=parseFloat(parent.find(".value").text());
-			var row={id:id,count:count};
+			var row={id:id,count:count,product_id:product_id};
 			data.push(row);
 		   };
 		});
@@ -271,7 +271,6 @@ if(data!=""){
 	}else{
 		alert("请选择要购买的商品");
 	}
-	 
 }
 
     </script>

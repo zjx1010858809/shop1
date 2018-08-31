@@ -1,11 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import entity.buy;
-import entity.orders;
-import entity.product;
 import entity.shopcar;
 import entity.user;
 import service.orders_service;
@@ -105,36 +100,14 @@ public class user_controller {
 	}
 	
 	@RequestMapping("user_pay")
-	public @ResponseBody JsonUtil orders(@RequestBody ArrayList<buy> buy,HttpSession session) {
-		if(session.getAttribute("user")!=null) {
-			orders o=new orders();
+	public @ResponseBody JsonUtil orders(@RequestBody ArrayList<shopcar> shopcar,HttpSession session) {
+		user u=(entity.user) session.getAttribute("user");
+		if(u!=null) {
 			
-			double amount=0;
-			double nowamount=0;
-			for(int i=0;i<buy.size();i++) {
-			int product_id=service.pselect(buy.get(i).getId());
-			product p=pservice.selectbyid(product_id);
-			double amount1=(p.getPrice())*(buy.get(i).getCount());
-			double nowamount1=(p.getNowprice())*(buy.get(i).getCount());
-			amount=amount+amount1;
-			nowamount=nowamount+nowamount1;
-			service.delshopcar(buy.get(i).getId());
-			}
-			user u=(user) session.getAttribute("user");
-			int user_id=u.getId();
-			String date=new Date().toLocaleString();
-			String code=(new Date().getTime())+"";
-			
-			o.setDate(date);
-			o.setCode(code);
-			o.setAmount(amount);
-			o.setNowamount(nowamount);
-			o.setUser_id(user_id);
-			if(oservice.insert(o)==1) {
-				
-				return new JsonUtil(1,"购买成功！");
+			if(oservice.orderss(shopcar,u)) {
+				return new JsonUtil(1, "购买成功！");
 			}else {
-				return new JsonUtil(2, "");
+				return new JsonUtil(2, "购买失败请重新购买");
 			}
 		}else {
 			return new JsonUtil(0, "登录超时请重新登录！");
