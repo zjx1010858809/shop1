@@ -11,6 +11,7 @@
 	<link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="css/shoppay.css">
+	<link rel="stylesheet" type="text/css" href="css/pay.css">
 	
 </head>
 
@@ -29,7 +30,7 @@
 							<a href="product_index">首页</a>
 							<i>|</i>
 						</li>
-						<li>我的购物车</li>
+						<li>支付</li>
 					</ul>
 				</div>
 			</div>
@@ -37,78 +38,63 @@
 		</div>
 		<!--//banner -->
 	</div>
-	<!--// header_top -->
-	<!--checkout-->
-	<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
-		<div class="container">
-			<div class="inner-sec-shop px-lg-4 px-3">
-				<h3 class="tittle-w3layouts my-lg-4 mt-3">我的购物车</h3>
-				<div class="checkout-right">
-					<h4>购物车有里:
-						<span>${myshopcar.size()}件商品</span>
-					</h4>
-					<table class="timetable_sub">
-						<thead>
-							<tr>
-								<th><input class="selectall" type="checkbox"></th>
-								<th>商品</th>
-								<th>单价</th>
-								<th>数量</th>
-								<th>商品名称</th>
-								<th>总价</th>
-								<th>移除</th>
-							</tr>
-						</thead>
-						<tbody>
-						<c:forEach items="${requestScope.myshopcar}" var="r" varStatus="v">
-							<tr class="rem1" myid="${r.id}" proid="${r.product_id}">
-								<td class="invert"><input class="chk" type="checkbox"></td>
-								<td class="invert-image">
-									<a href="product_single">
-										<img src="${r.pic}" style="width:80px;height: 100px;" class="img-responsive">
-									</a>
-								</td>
-								<td class="invert l5">￥${r.nowprice}</td>
-								
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus ">&nbsp;</div>
-											<div class="entry value">
-												<span>${r.count}</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">${r.fullname}</td>
+	<!--内容-->
+<div id="contentCon">
+	<div>
+    	<span>
+        	<h2>选择付款方式</h2>
+            <p>订单号：123456789</p>
+        </span>
+        <ol>
+        	<p>应付：</p>
+            <span>¥128.00</span>
+        </ol>
+    </div>
+    <ul>
+    	<li class="box01">
+        	<input type="radio" name="payfuncation">
+            <i><img src="images/zhifubao.png"></i>
+        </li>
+        <li class="box02">
+        	<div></div>
+            <span>
+            	<p>扫描使用手机端支付宝</p>
+                <p class="text02">完成支付</p>
+            </span>
+        </li>
+    </ul>
+    <ul>
+    	<li class="box01">
+        	<input type="radio" name="payfuncation">
+            <i class="pic02"><img src="images/weixin.png"></i>
+        </li>
+        <li class="box02">
+        	<div><img src="images/erweima_06.png"></div>
+            <span>
+            	<p>请使用微信扫描二维码</p>
+                <p class="text02">完成支付</p>
+            </span>
+        </li>
+    </ul>
 
-								<td class="invert l7">￥${r.nowprice*r.count}</td>
-								<td class="invert">
-									<div class="rem">
-									<input type="hidden" name="id" value="${r.id}">
-										<div class="close1"> </div>
-									</div>
+    <ol style="margin-bottom: 60px;">
+    	<li>
+        	<input type="radio">
+            <i><img src="images/yinglian.png"></i>
+        </li>
+    	<li class="box03">
+        	<a href="#"><img src="images/logo_03.jpg"></a>
+            <a href="#" id="logo01"><img src="images/logo_05.jpg"></a>
+            <a href="#"><img src="images/logo_07.jpg"></a>
+        </li>
+        <li>
+        	<a href="#"><img src="images/logo_12.jpg"></a>
+            <a href="#" id="logo02"><img src="images/logo_14.jpg"></a>
+            <a href="#"><img src="images/logo_17.jpg"></a>
+        </li>
+    </ol>
 
-								</td>
-							</tr>
-							</c:forEach>
-							
-							
-						</tbody>
-					</table>
-				</div>
-				
-				
-				<div class="all2">
-				<input type="checkbox" class="selectall" name="" id="" value="" /><span class="s1">全选</span><span class="s3">已选中商品</span>
-				<span class="s4">0</span><span class="s5">件</span><span class="s6">总价(元)：</span><span class="s7">￥0</span><button onclick="mysubmit();" class="s8">结算</button>
-				</div>
-			</div>
-
-		</div>
-	</section>
-	<!--//checkout-->
+</div>
 <%@include file="_footer.jsp" %>
 
 	<script src="js/easy-responsive-tabs.js"></script>
@@ -252,14 +238,14 @@ if(data!=""){
         dataType: "json",
         success: function (res) {
         	if(res.c==1){
-				location.href="pay.jsp";
-				/* $(".chk").each(function(){
+				alert(res.msString);
+				$(".chk").each(function(){
 					   if($(this).prop("checked")){
 						   $(this).parents(".rem1").fadeOut('slow', function () {
 							   $(this).parents(".rem1").remove();
 								});
 						   }
-					   }); */
+					   });
 			}else if(res.c==2){
 					alert(res.msString);
 				}else

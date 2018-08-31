@@ -213,7 +213,7 @@
 							<a class="nav-link" href="contact.jsp">Contact</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="about.jsp">个人中心</a>
+							<a class="nav-link" href="personal">个人中心</a>
 						</li>
 					</ul>
 				</div>

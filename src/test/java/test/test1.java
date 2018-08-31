@@ -11,7 +11,7 @@ user_service ss;
 	
 	@Test
 	public void sss() {
-		int a111=ss.pselect(2);
-		System.out.println(a111);
+//		int a111=ss.register(u)
+//		System.out.println(a111);
 	}
 }
