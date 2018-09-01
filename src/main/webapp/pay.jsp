@@ -43,11 +43,12 @@
 	<div>
     	<span>
         	<h2>选择付款方式</h2>
-            <p>订单号：123456789</p>
+            <p id="currentcode">订单号：${sessionScope.code}</p>
         </span>
+        <button onclick="payfor();" type="button" style="background-color: aqua;">支付</button>
         <ol>
         	<p>应付：</p>
-            <span>¥128.00</span>
+            <span>¥${sessionScope.nowamount}</span>
         </ol>
     </div>
     <ul>
@@ -99,166 +100,25 @@
 
 	<script src="js/easy-responsive-tabs.js"></script>
 	<script>
-		$(document).ready(function () {
-			$('#horizontalTab').easyResponsiveTabs({
-				type: 'default', //Types: default, vertical, accordion           
-				width: 'auto', //auto or any width like 600px
-				fit: true, // 100% fit in a container
-				closed: 'accordion', // Start closed if in accordion view
-				activate: function (event) { // Callback function if tab is switched
-					var $tab = $(this);
-					var $info = $('#tabInfo');
-					var $name = $('span', $info);
-					$name.text($tab.text());
-					$info.show();
-				}
-			});
-			$('#verticalTab').easyResponsiveTabs({
-				type: 'vertical',
-				width: 'auto',
-				fit: true
-			});
-		});
-	</script>
-<!--数据处理-->
-	<script>
-	function changercount(id,count){
-		$.post("changercount",{id:id,count:count},function(res){
-				if(res.c==2){
-					alert(res.msString);
-				}else
-					if(res.c==3){
-						alert(res.msString);
-					};
-		},"json");
-	};
-	function alljs(){
-		   var all=0;
-		   var ccc=0;
-		   $(".chk").each(function(){
-			   if($(this).prop("checked")){
-				ccc++;
-			   var parent=$(this).parents(".rem1");
-			   var amount=parent.find(".l7").text();
-			   amount=parseFloat(amount.substring(1));
-			   all+=amount;
-			   }
-		   });
-		   $(".s4").text(ccc);
-		   $(".s7").text("￥"+all.toFixed(1));
-	   };
-	
-//合计点击事件
-	$(".chk").on("click",function(){
-		alljs();
-	});
-//全选点击事件
-	$(".selectall").on("click",function(){
-		if(event.target.checked)
-		$(".chk").prop("checked","checked");
-		else
-			$(".chk").prop("checked","");
-		alljs();
-	});
-//数量点击事件
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-			
-			var parent=$(event.target).parents(".rem1");
-			var id=parent.attr("myid");
-			var price=parent.find(".l5").text();
-			price=parseFloat(price.substring(1));
-			parent.find(".l7").text("￥"+(newVal*price).toFixed(1));				
-			changercount(id,newVal);
-			alljs();
-			
-		});
-
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
-			
-			var parent=$(event.target).parents(".rem1");
-			var id=parent.attr("myid");
-			var price=parent.find(".l5").text();
-			price=parseFloat(price.substring(1));
-			parent.find(".l7").text("￥"+((divUpd.text())*price).toFixed(1));
-			changercount(id,divUpd.text());
-			alljs();
-		});
-//移除点击事件
-		$('.close1').on('click', function () {
-			var o=$(event.target);
-			var id=o.prev().val();
-			if(confirm("确认要删除吗?")){
-				$.ajax({
-					url:"outcar",
-					type:"post",
-					data:{id:id},
-					success:function(res){
-						if(res.c==1){
-							o.parents(".rem1").fadeOut('slow', function () {
-							o.parents(".rem1").remove();
-							alljs();
-							});
-						}else
-							if(res.c==2){
-								alert(res.msString);
-							}else
-								if(res.c==3){
-									alert(res.msString);
-								}
-					}
-				});
-			}
-		});
-
-//结算点击事件
-   function mysubmit(){
-	   var data=[];
-	   $(".chk").each(function(){
-		   if($(this).prop("checked")){
-			var parent=$(this).parents(".rem1");
-			var id=parseInt(parent.attr("myid"));
-			var product_id=parseInt(parent.attr("proid"));
-			var count=parseFloat(parent.find(".value").text());
-			var row={id:id,count:count,product_id:product_id};
-			data.push(row);
-		   };
-		});
-if(data!=""){
+//支付
+   function payfor(){
+	alert("点击");
 	$.ajax({
-        type: "POST",
-        url: "user_pay",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data),
-        dataType: "json",
-        success: function (res) {
-        	if(res.c==1){
+		url:"user_pay",
+		type:"post",
+		data:$("#currentcode").text(),
+		success:function(res){
+			if(res.c==1){
 				alert(res.msString);
-				$(".chk").each(function(){
-					   if($(this).prop("checked")){
-						   $(this).parents(".rem1").fadeOut('slow', function () {
-							   $(this).parents(".rem1").remove();
-								});
-						   }
-					   });
-			}else if(res.c==2){
+				location.href="myshopcar?id=${sessionScope.user.id}";
+			}else
+				if(res.c==0){
 					alert(res.msString);
-				}else
-					if(res.c==0){
-						alert(res.msString);
-						}
-        	}
-        });
-	}else{
-		alert("请选择要购买的商品");
-	}
+				}
+		}
+	});
 }
-
+	
     </script>
 
 </body>

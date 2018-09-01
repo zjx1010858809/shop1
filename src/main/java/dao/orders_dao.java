@@ -2,6 +2,7 @@ package dao;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import entity.orders;
@@ -14,4 +15,7 @@ public interface orders_dao {
 	
 	@Select("select id from orders where code=#{code}")
 	public int selectbycode(String code);
+	
+	@Update("update orders set status=#{status}")
+	public int supdate(int status);
 }

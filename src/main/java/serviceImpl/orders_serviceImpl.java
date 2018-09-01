@@ -3,6 +3,8 @@ package serviceImpl;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +34,7 @@ public class orders_serviceImpl implements orders_service {
 	address_dao adao;
 
 	@Transactional
-	public boolean orderss(ArrayList<shopcar> shopcar,user u) {
+	public boolean orderss(ArrayList<shopcar> shopcar,user u,HttpSession session) {
 		orders o=new orders();
 		double amount=0;
 		double nowamount=0;
@@ -50,6 +52,9 @@ public class orders_serviceImpl implements orders_service {
 		}
 			String code=new Date().getTime()+"";
 			
+			session.setAttribute("code", code);
+			session.setAttribute("nowamount", nowamount);
+			
 			o.setAddress_id(adao.select(user_id).get(0).getId());
 			o.setDate(new Date().toLocaleString());
 			o.setCode(code);
@@ -59,7 +64,6 @@ public class orders_serviceImpl implements orders_service {
 			
 			odao.insert(o);
 			int oid=odao.selectbycode(code);
-			System.out.println(oid);
 			orders_details od=new orders_details();
 			for(int i=0;i<shopcar.size();i++) {
 				product p=pdao.selectbyid(shopcar.get(i).getProduct_id());
@@ -81,6 +85,10 @@ public class orders_serviceImpl implements orders_service {
 	public int selectbycode(String code) {
 		
 		return odao.selectbycode(code);
+	}
+
+	public int supdate(int status) {
+		return odao.supdate(status);
 	}
 
 	

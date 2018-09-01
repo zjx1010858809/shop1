@@ -99,12 +99,12 @@ public class user_controller {
 		}
 	}
 	
-	@RequestMapping("user_pay")
+	@RequestMapping("user_true")
 	public @ResponseBody JsonUtil orders(@RequestBody ArrayList<shopcar> shopcar,HttpSession session) {
 		user u=(entity.user) session.getAttribute("user");
 		if(u!=null) {
 			
-			if(oservice.orderss(shopcar,u)) {
+			if(oservice.orderss(shopcar,u,session)) {
 				return new JsonUtil(1, "购买成功！");
 			}else {
 				return new JsonUtil(2, "购买失败请重新购买");
@@ -113,6 +113,16 @@ public class user_controller {
 			return new JsonUtil(0, "登录超时请重新登录！");
 		}
 		
+	}
+	
+	@RequestMapping("user_pay")
+	public @ResponseBody JsonUtil payfor() {
+		
+		if(oservice.supdate(1)>0) {
+			return new JsonUtil(1, "支付成功！");
+		}else {
+			return new JsonUtil(0, "支付失败请重新支付！");
+		}
 	}
 
 }

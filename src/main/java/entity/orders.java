@@ -8,7 +8,7 @@ public class orders {
 	double nowamount;
 	int address_id;
 	int user_id;
-	int status=1;
+	int status=0;
 	int assessstatus=0;
 	String comments="";
 	public int getId() {

@@ -246,7 +246,7 @@
 if(data!=""){
 	$.ajax({
         type: "POST",
-        url: "user_pay",
+        url: "user_true",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
         dataType: "json",
