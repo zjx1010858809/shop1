@@ -14,6 +14,16 @@
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 <link href="css/fontawesome-all.css" rel="stylesheet">
 
+
+<script type="text/javascript">
+	    function myshopcar(id) {
+	    	if(id==null){
+	    		alert("请先登录");
+	    	}else{
+	    		location.href='myshopcar?id='+id;
+	    	}
+		}
+	    </script>
 <!--返回时停留在之前浏览位置，有了这个可以清楚位置-->
 	<!-- <script>
 		addEventListener("load", function () {

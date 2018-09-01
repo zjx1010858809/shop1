@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -19,4 +21,7 @@ public interface orders_dao {
 	
 	@Update("update orders set status=#{status} where code=#{code}")
 	public void supdate(@Param("status") int status,@Param("code") String code);
+	
+	@Select("select * from orders where user_id=#{user_id}")
+	public List<orders> selebyuserid(int user_id);
 }

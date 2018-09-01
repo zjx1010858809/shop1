@@ -10,16 +10,6 @@
 	<link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	
-	
-	    <script type="text/javascript">
-	    function myshopcar(id) {
-	    	if(id==null){
-	    		alert("请先登录");
-	    	}else{
-	    		location.href='myshopcar?id='+id;
-	    	}
-		}
-	    </script>
 </head>
 
 <body>

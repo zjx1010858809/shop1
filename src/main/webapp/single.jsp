@@ -15,15 +15,6 @@
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 	
-	<script type="text/javascript">
-	    function myshopcar(id) {
-	    	if(id==null){
-	    		alert("请先登录");
-	    	}else{
-	    		location.href='myshopcar?id='+id;
-	    	}
-		}
-	    </script>
 </head>
 
 <body>
@@ -115,6 +106,7 @@
 						<div class="occasion-cart">
 							<div class="googles single-item singlepage">
 							<button onclick="incar();" type="button" style="background-color: #DF3033;color: white;" class="googles-cart">加入购物车</button>
+							<button onclick="collect();" type="button" style="background-color: #DF3033;color: white;" class="googles-cart">收藏商品</button>
 							</div>
 						</div>
 						<ul class="footer-social text-left mt-lg-4 mt-3">
@@ -526,6 +518,26 @@ function incar() {
 		}
 	});
 }
+/* 收藏商品 */
+function collect() {
+	var product_id=$(".pid").val();
+	$.ajax({
+		url:"product_collect",
+		data:{product_id:product_id},
+		dataType:'json',
+		type:'post',
+		success:function(res){
+			if(res.c==0){
+				alert(res.msString);
+			}else
+				if(res.c==1){
+					alert(res.msString);
+				}
+		}
+	});
+	
+}
+
 </script>
 
 </body>
