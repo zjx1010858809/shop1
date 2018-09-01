@@ -18,7 +18,6 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <p>晨曦夏夜</p>
         <a href="#">切换账号</a>
         <span></span>
         <ul>
@@ -40,47 +39,14 @@
         <div>
             <ol>
                 <li>用 户 I D</li>
-                <li>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</li>
-                <li>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</li>
-                <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</li>
+                <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</li>
                 <li>手机号码</li>
-                <li>出生日期</li>
             </ol>
             <ul>
-            	<p>12345678</p>
-                <p>1755984552@163.com</p>
-                <div><input type="text" value="晨曦夏夜"></div>
-                <ol>
-                	<input name="gender" type="radio"><label>男</label>
-                    <input name="gender" type="radio" class="woman"><label>女</label>
-                </ol>
-                <p>178****5048</p>
-                <li>
-                	<select>
-                    	<option value="1">--</option>
-                    	<option value="2">1997</option>
-                        <option value="3">1996</option>
-                        <option value="4">1995</option>
-                        <option value="5">1994</option>
-                    </select>
-                    <label>年</label>
-                    <select class="moonth">
-                    	<option value="1">--</option>
-                    	<option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <label>月</label>
-                    <select class="moonth">
-                    	<option value="1">--</option>
-                    	<option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                    <label>日</label>
-                </li>
+            	<p>${user.id}</p>
+                <p>${user.email}</p>
+                <p>${user.tel}</p>
+                
             </ul>
         </div>
         <span></span>

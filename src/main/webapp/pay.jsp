@@ -43,7 +43,7 @@
 	<div>
     	<span>
         	<h2>选择付款方式</h2>
-            <p id="currentcode">订单号：${sessionScope.code}</p>
+            <p>订单号：<a id="currentcode">${sessionScope.code}</a></p>
         </span>
         <button onclick="payfor();" type="button" style="background-color: aqua;">支付</button>
         <ol>
@@ -102,11 +102,11 @@
 	<script>
 //支付
    function payfor(){
-	alert("点击");
+	var code=$("#currentcode").text();
 	$.ajax({
 		url:"user_pay",
 		type:"post",
-		data:$("#currentcode").text(),
+		data:{code:code},
 		success:function(res){
 			if(res.c==1){
 				alert(res.msString);

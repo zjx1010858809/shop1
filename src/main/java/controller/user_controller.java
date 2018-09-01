@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -116,9 +117,10 @@ public class user_controller {
 	}
 	
 	@RequestMapping("user_pay")
-	public @ResponseBody JsonUtil payfor() {
+	public @ResponseBody JsonUtil payfor(String code) {
 		
-		if(oservice.supdate(1)>0) {
+		System.out.println(code);
+		if(oservice.payfor(1,code)) {
 			return new JsonUtil(1, "支付成功！");
 		}else {
 			return new JsonUtil(0, "支付失败请重新支付！");

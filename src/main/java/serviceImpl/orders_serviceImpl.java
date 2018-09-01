@@ -12,10 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import dao.address_dao;
 import dao.orders_dao;
 import dao.orders_details_dao;
+import dao.orders_status_dao;
 import dao.product_dao;
 import dao.user_dao;
 import entity.orders;
 import entity.orders_details;
+import entity.orders_status;
 import entity.product;
 import entity.shopcar;
 import entity.user;
@@ -32,10 +34,13 @@ public class orders_serviceImpl implements orders_service {
 	orders_details_dao ddao;
 	@Autowired
 	address_dao adao;
+	@Autowired
+	orders_status_dao sdao;
 
 	@Transactional
 	public boolean orderss(ArrayList<shopcar> shopcar,user u,HttpSession session) {
 		orders o=new orders();
+		orders_status os=new orders_status();
 		double amount=0;
 		double nowamount=0;
 		int user_id=u.getId();
@@ -55,15 +60,26 @@ public class orders_serviceImpl implements orders_service {
 			session.setAttribute("code", code);
 			session.setAttribute("nowamount", nowamount);
 			
+			String date=new Date().toLocaleString();
+			
 			o.setAddress_id(adao.select(user_id).get(0).getId());
-			o.setDate(new Date().toLocaleString());
+			o.setDate(date);
 			o.setCode(code);
 			o.setAmount(amount);
 			o.setNowamount(nowamount);
 			o.setUser_id(user_id);
 			
 			odao.insert(o);
-			int oid=odao.selectbycode(code);
+			orders order=odao.selectbycode(code);
+			
+			os.setOrders_id(order.getId());
+			os.setDate(date);
+			os.setDest_status(0);
+			os.setNum(user_id);
+			os.setAmount(nowamount);
+			
+			sdao.insert(os);
+			
 			orders_details od=new orders_details();
 			for(int i=0;i<shopcar.size();i++) {
 				product p=pdao.selectbyid(shopcar.get(i).getProduct_id());
@@ -71,7 +87,7 @@ public class orders_serviceImpl implements orders_service {
 				double amount1=p.getPrice()*shopcar.get(i).getCount();
 				double nowamount1=p.getNowprice()*shopcar.get(i).getCount();
 				
-				od.setOrders_id(oid);
+				od.setOrders_id(order.getId());
 				od.setProduct_id(shopcar.get(i).getProduct_id());
 				od.setCount(shopcar.get(i).getCount());
 				od.setPrice(amount1);
@@ -82,13 +98,25 @@ public class orders_serviceImpl implements orders_service {
 		return true;
 	}
 
-	public int selectbycode(String code) {
-		
+	public orders selectbycode(String code) {
 		return odao.selectbycode(code);
 	}
 
-	public int supdate(int status) {
-		return odao.supdate(status);
+	@Transactional
+	public boolean payfor(int status,String code) {
+		odao.supdate(status,code);
+		
+		orders_status os=new orders_status();
+		orders order=odao.selectbycode(code);
+		
+		os.setOrders_id(order.getId());
+		os.setDate(new Date().toLocaleString());
+		os.setDest_status(status);
+		os.setNum(order.getUser_id());
+		os.setAmount(order.getNowamount());
+		
+		sdao.insert(os);
+		return true;
 	}
 
 	
