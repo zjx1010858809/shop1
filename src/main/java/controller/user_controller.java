@@ -126,5 +126,10 @@ public class user_controller {
 			return new JsonUtil(0, "支付失败请重新支付！");
 		}
 	}
+	
+	@RequestMapping("user_topay")
+	public void topay(int orders_id) {
+		
+	}
 
 }

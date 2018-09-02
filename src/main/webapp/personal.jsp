@@ -22,7 +22,7 @@
         <span></span>
         <ul>
         	<li><a href="#" class="my">个人信息</a></li>
-            <li><a href="myorders.jsp">我的订单</a></li>
+            <li><a href="myorders">我的订单</a></li>
             <li><a href="#">我的钱包</a></li>
             <li><a href="#">优惠特权</a></li>
             <li><a href="#">地址管理</a></li>

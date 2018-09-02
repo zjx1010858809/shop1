@@ -40,20 +40,32 @@
             <li>待评价</li>
             <li>售后服务</li>
         </ul>
-        
+        <c:forEach items="${myorders}" var="r">
         <ol>
-            <p>2017-9-22&nbsp;&nbsp;&nbsp;&nbsp;订单号：124534645747</p>
-            <a href="#"></a>
+            <p>${r.date}&nbsp;&nbsp;&nbsp;&nbsp;订单号：${r.code}</p>
+            <c:if test="${r.status==0}">
+                <button style="float: right;margin-top: 10px;">去支付</button>
+            </c:if>
+            <c:if test="${r.status==1}">
+                <a style="margin-right:0px;width:100px; margin-top: 10px;">等待发货</a>
+            </c:if>
+            <c:if test="${r.status==2}">
+                <button style="float: right;margin-top: 10px;">确认收货</button>
+            </c:if>
+            <c:if test="${r.status==3}">
+                <button style="float: right;margin-top: 10px;">去评价</button>
+            </c:if>
         </ol>
         <div>
-        	<li></li>
-            <ul>
+        	<ul>
             	<li>
-                	<p>创意甜橙味蛋糕</p>
-                    <span>净含量：250克</span>
+            		<img alt="" src="${r.pic}" style="width: 90px;height: 90px;">
+            	</li>
+            	<li>
+                	<p style="width: 80px;">${r.fullname}</p>
                 </li>
-                <li class="price">¥29.00</li>
-                <li class="price">x1</li>
+                <li class="price">¥${r.nowprice}</li>
+                <li class="price">x${r.count}</li>
                 <li>
                 	<a href="#">联系我们</a>
                     <a href="#" class="text02">申请售后</a>
@@ -62,8 +74,15 @@
                 	<a href="#">订单详情</a>
                     <a href="#" class="text02">查看物流</a>
                 </li>
+                <li>
+                	
+                	
+                </li>
             </ul>
         </div>
+        
+        
+        </c:forEach>
         
     </div>
     

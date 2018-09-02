@@ -44,6 +44,7 @@ public class orders_serviceImpl implements orders_service {
 		double amount=0;
 		double nowamount=0;
 		int user_id=u.getId();
+		ArrayList<String> codes= new ArrayList<String>();
 		for(int i=0;i<shopcar.size();i++) {
 			product p=pdao.selectbyid(shopcar.get(i).getProduct_id());
 			
@@ -54,6 +55,7 @@ public class orders_serviceImpl implements orders_service {
 			nowamount=nowamount+nowamount1;
 			
 			udao.delshopcar(shopcar.get(i).getId());
+			
 		}
 			String code=new Date().getTime()+"";
 			

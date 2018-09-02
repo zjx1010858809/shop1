@@ -1,5 +1,7 @@
 package serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class orders_details_serviceImpl implements orders_details_service {
 	public void insert(orders_details d) {
 		ddao.insertorders(d);
 		
+	}
+
+	public List<orders_details> myorders(int user_id) {
+		return ddao.myorders(user_id);
 	}
 	
 

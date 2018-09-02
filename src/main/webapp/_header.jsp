@@ -23,6 +23,14 @@
 	    		location.href='myshopcar?id='+id;
 	    	}
 		}
+	    
+	    function personal(id) {
+	    	if(id==null){
+	    		alert("请先登录");
+	    	}else{
+	    		location.href='personal';
+	    	}
+		}
 	    </script>
 <!--返回时停留在之前浏览位置，有了这个可以清楚位置-->
 	<!-- <script>
@@ -223,7 +231,7 @@
 							<a class="nav-link" href="contact.jsp">Contact</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="personal">个人中心</a>
+							<a class="nav-link" onclick="personal(${sessionScope.user.id});" >个人中心</a>
 						</li>
 					</ul>
 				</div>
