@@ -50,7 +50,7 @@
                 <a style="margin-right:0px;width:100px; margin-top: 10px;">等待发货</a>
             </c:if>
             <c:if test="${r.status==2}">
-                <button style="float: right;margin-top: 10px;">确认收货</button>
+                <button type="button" style="float: right;margin-top: 10px;">确认收货</button>
             </c:if>
             <c:if test="${r.status==3}">
                 <button style="float: right;margin-top: 10px;">去评价</button>

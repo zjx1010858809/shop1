@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 import dao.product_dao;
 import entity.product;
 import service.product_service;
+import util.SearchInfo;
 @Service
 public class product_serviceImpl implements product_service {
 	@Autowired
 	product_dao dao;
 
-	public List<product> selectall() {
-		return dao.selectall();
+	public List<product> selectall(SearchInfo info) {
+		return dao.selectall(info);
 	}
 
 	public product selectbyid(int id) {
@@ -24,5 +25,7 @@ public class product_serviceImpl implements product_service {
 	public List<product> selectbytype(int id) {
 		return dao.selectbytype(id);
 	}
+
+	
 
 }

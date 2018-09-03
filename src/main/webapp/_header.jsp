@@ -149,25 +149,14 @@
 			</div>
 			
 <!-- 搜索 -->
-			<div class="search">
-				<div class="mobile-nav-button">
-					<button id="trigger-overlay" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
-				<!-- open/close -->
-				<div class="overlay overlay-door">
-					<button type="button" class="overlay-close">
-						<i class="fa fa-times" aria-hidden="true"></i>
-					</button>
-					<form action="#" method="post" class="d-flex">
-						<input class="form-control" type="search" placeholder="Search here..." required="">
-						<button type="submit" class="btn btn-primary submit">
+			<div style="width: 200px;float: right;">
+				<form action="product_index" method="post" class="d-flex">
+						<input class="form-control" name="txt" type="text" placeholder="商品名...">
+						<button type="submit" class="btn btn-primary submit ">
 							<i class="fas fa-search"></i>
 						</button>
 					</form>
-				<!-- open/close -->
-			</div>
+				</div>
 			
 <!-- 导航栏 -->
 			<label class="top-log mx-auto"></label>
@@ -227,9 +216,9 @@
 							</ul>
 						</li>
 						
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a class="nav-link" href="contact.jsp">Contact</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a class="nav-link" onclick="personal(${sessionScope.user.id});" >个人中心</a>
 						</li>

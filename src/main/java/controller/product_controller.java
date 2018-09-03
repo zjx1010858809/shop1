@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import entity.product;
 import service.product_service;
 import service.type_service;
+import util.SearchInfo;
 
 @Controller
 public class product_controller {
@@ -18,8 +18,8 @@ public class product_controller {
 	type_service tservice;
 	
 	@RequestMapping("product_index")
-	public String selectall(ModelMap mv) {
-		mv.put("productlist",service.selectall());
+	public String selectall(SearchInfo info,ModelMap mv) {
+		mv.put("productlist",service.selectall(info));
 		mv.put("typelist",tservice.select());
 		return "index";
 	}
@@ -38,5 +38,6 @@ public class product_controller {
 		mv.put("typelist",tservice.select());
 		return "type";
 	}
+	
 
 }

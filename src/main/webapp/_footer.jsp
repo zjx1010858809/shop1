@@ -62,10 +62,10 @@
 					</div>
 					<ul class="links">
 						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="404.html">Error</a></li>
-						<li><a href="shop.html">Shop</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
+						<li><a href="index.html">About</a></li>
+						<li><a href="index.html">Error</a></li>
+						<li><a href="index.html">Shop</a></li>
+						<li><a href="index.html">Contact Us</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-3 footer-grid-w3ls">
@@ -88,8 +88,7 @@
 			</div>
 			<div class="copyright-w3layouts mt-4">
 				<p class="copy-right text-center ">
-					Copyright &copy; 2018.Company name All rights reserved.<a
-						target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+					Copyright &copy; 2018.Company name All rights reserved.
 				</p>
 			</div>
 		</div>
@@ -141,7 +140,6 @@
             $().UItoTop({
                 easingType: 'easeOutQuart'
             });
-
         });
     </script>
     
