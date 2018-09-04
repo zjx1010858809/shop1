@@ -24,4 +24,10 @@ public interface orders_dao {
 	
 	@Select("select * from orders where user_id=#{user_id}")
 	public List<orders> selebyuserid(int user_id);
+	
+	@Select("select * from orders where id=#{id}")
+	public orders selebyid(int id);
+	
+	@Update("update orders set status=3 where id=#{id}")
+	public int sure(int id);
 }

@@ -10,11 +10,8 @@ public class orders_details {
 	String comments="";
 	
 	
-	String date;
-	String code;
 	String fullname;
 	String pics;
-	int status;
 	
 	
 	public String[] getPiclist() {
@@ -31,30 +28,14 @@ public class orders_details {
 	}
 	
 	
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
+	
 	public String getPics() {
 		return pics;
 	}
 	public void setPics(String pics) {
 		this.pics = pics;
 	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
+	
 	public String getFullname() {
 		return fullname;
 	}

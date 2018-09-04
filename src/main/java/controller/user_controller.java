@@ -118,8 +118,6 @@ public class user_controller {
 	
 	@RequestMapping("user_pay")
 	public @ResponseBody JsonUtil payfor(String code) {
-		
-		System.out.println(code);
 		if(oservice.payfor(1,code)) {
 			return new JsonUtil(1, "支付成功！");
 		}else {
@@ -128,8 +126,17 @@ public class user_controller {
 	}
 	
 	@RequestMapping("user_topay")
-	public void topay(int orders_id) {
-		
+	public String topay(Integer id,ModelMap mv) {
+		mv.put("orders",oservice.selebyid(id));
+		return "pay2";
+	}
+	
+	@RequestMapping("user_sure")
+	public @ResponseBody JsonUtil sure(Integer id) {
+		if(oservice.sure(id)>0) {
+			return new JsonUtil(1, "");
+		}
+		return new JsonUtil(0,"");
 	}
 
 }

@@ -19,22 +19,25 @@ public class product_controller {
 	
 	@RequestMapping("product_index")
 	public String selectall(SearchInfo info,ModelMap mv) {
+		mv.put("txt",info.getTxt());
 		mv.put("productlist",service.selectall(info));
 		mv.put("typelist",tservice.select());
 		return "index";
 	}
 	
 	@RequestMapping("product_single")
-	public String selectbyid(Integer id,ModelMap mv) {
+	public String selectbyid(SearchInfo info,Integer id,ModelMap mv) {
 		mv.put("typelist",tservice.select());
+		mv.put("productlist",service.selectall(info));
 		mv.put("single",service.selectbyid(id));
 		return "single";
 	}
 	
 	@RequestMapping("product_type")
-	public String selectbytype(Integer id,ModelMap mv) {
+	public String selectbytype(SearchInfo info,Integer id,ModelMap mv) {
 		mv.put("producttypelist",service.selectbytype(id));
 		mv.put("typename",tservice.getByid(id));
+		mv.put("productlist",service.selectall(info));
 		mv.put("typelist",tservice.select());
 		return "type";
 	}

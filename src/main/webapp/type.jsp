@@ -30,38 +30,16 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<div class="carousel-caption text-center">
-							<h3>Men’s eyewear
-								<span>Cool summer sale 50% off</span>
-							</h3>
-							<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-						</div>
+						
 					</div>
 					<div class="carousel-item item2">
-						<div class="carousel-caption text-center">
-							<h3>Women’s eyewear
-								<span>Want to Look Your Best?</span>
-							</h3>
-							<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-
-						</div>
+						
 					</div>
 					<div class="carousel-item item3">
-						<div class="carousel-caption text-center">
-							<h3>Men’s eyewear
-								<span>Cool summer sale 50% off</span>
-							</h3>
-							<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-
-						</div>
+						
 					</div>
 					<div class="carousel-item item4">
-						<div class="carousel-caption text-center">
-							<h3>Women’s eyewear
-								<span>Want to Look Your Best?</span>
-							</h3>
-							<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-						</div>
+						
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -130,7 +108,7 @@
 					<div class="col-md-12 middle-slider my-4">
 						<div class="middle-text-info ">
 
-							<h3 class="tittle-w3layouts two text-center my-lg-4 mt-3">Summer Flash sale</h3>
+							<h3 class="tittle-w3layouts two text-center my-lg-4 mt-3">Flash sale</h3>
 <!-- 倒计时 -->				<div class="simply-countdown-custom" id="simply-countdown-custom"></div>
 
 						</div>
@@ -141,450 +119,49 @@
 					<!--//banner-sec-->
 					<div class="mid-slider">
 						<div class="owl-carousel owl-theme row">
+							
+							<c:forEach items="${productlist}" var="r">
 							<div class="item">
 								<div class="gd-box-info text-center">
 									<div class="product-men women_two bot-gd">
 										<div class="product-googles-info slide-img googles">
 											<div class="men-pro-item">
 												<div class="men-thumb-item">
-													<img src="images/s5.jpg" class="img-fluid" alt="">
-													<div class="men-cart-pro">
-														<div class="inner-men-cart-pro">
-															<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-														</div>
-													</div>
-													<span class="product-new-top">New</span>
+									<img src="${r.pic}" class="img-fluid" alt="${r.fullname}">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="product_single?id=${r.id}" class="link-product-add-cart">Quick View</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="item-info-product">
+									<div class="info-product-price">
+										<div class="grid_meta">
+											<div class="product_price">
+												<h4>
+													<a href="product_single?id=${r.id}">${r.fullname}</a>
+												</h4>
+												<div class="grid-price mt-2">
+													<span class="money ">$${r.nowprice}</span>
 												</div>
-												<div class="item-info-product">
-
-													<div class="info-product-price">
-														<div class="grid_meta">
-															<div class="product_price">
-																<h4>
-																	<a href="single.jsp">Fastrack Aviator </a>
-																</h4>
-																<div class="grid-price mt-2">
-																	<span class="money ">$325.00</span>
-																</div>
-															</div>
-															<ul class="stars">
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Fastrack Aviator">
-																<input type="hidden" name="amount" value="325.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
-																	<i class="fas fa-cart-plus"></i>
-																</button>
-															</form>
-
-														</div>
-													</div>
-
-												</div>
+											</div>
+										</div>
+										<div class="googles single-item hvr-outline-out">
+												<button onclick="incar(${r.id});" type="button" class="googles-cart pgoogles-cart">
+													<i class="fas fa-cart-plus"></i>
+												</button>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="item">
-								<div class="gd-box-info text-center">
-									<div class="product-men women_two bot-gd">
-										<div class="product-googles-info slide-img googles">
-											<div class="men-pro-item">
-												<div class="men-thumb-item">
-													<img src="images/s6.jpg" class="img-fluid" alt="">
-													<div class="men-cart-pro">
-														<div class="inner-men-cart-pro">
-															<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-														</div>
-													</div>
-													<span class="product-new-top">New</span>
-												</div>
-												<div class="item-info-product">
-
-													<div class="info-product-price">
-														<div class="grid_meta">
-															<div class="product_price">
-																<h4>
-																	<a href="single.jsp">MARTIN Aviator </a>
-																</h4>
-																<div class="grid-price mt-2">
-																	<span class="money ">$425.00</span>
-																</div>
-															</div>
-															<ul class="stars">
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="MARTIN Aviator">
-																<input type="hidden" name="amount" value="425.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
-																	<i class="fas fa-cart-plus"></i>
-																</button>
-															</form>
-
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="gd-box-info text-center">
-									<div class="product-men women_two bot-gd">
-										<div class="product-googles-info slide-img googles">
-											<div class="men-pro-item">
-												<div class="men-thumb-item">
-													<img src="images/s7.jpg" class="img-fluid" alt="">
-													<div class="men-cart-pro">
-														<div class="inner-men-cart-pro">
-															<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-														</div>
-													</div>
-													<span class="product-new-top">New</span>
-												</div>
-												<div class="item-info-product">
-
-													<div class="info-product-price">
-														<div class="grid_meta">
-															<div class="product_price">
-																<h4>
-																	<a href="single.jsp">Royal Son Aviator </a>
-																</h4>
-																<div class="grid-price mt-2">
-																	<span class="money ">$425.00</span>
-																</div>
-															</div>
-															<ul class="stars">
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Royal Son Aviator">
-																<input type="hidden" name="amount" value="425.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
-																	<i class="fas fa-cart-plus"></i>
-																</button>
-															</form>
-
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="gd-box-info text-center">
-									<div class="product-men women_two bot-gd">
-										<div class="product-googles-info slide-img googles">
-											<div class="men-pro-item">
-												<div class="men-thumb-item">
-													<img src="images/s8.jpg" class="img-fluid" alt="">
-													<div class="men-cart-pro">
-														<div class="inner-men-cart-pro">
-															<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-														</div>
-													</div>
-													<span class="product-new-top">New</span>
-												</div>
-												<div class="item-info-product">
-
-													<div class="info-product-price">
-														<div class="grid_meta">
-															<div class="product_price">
-																<h4>
-																	<a href="single.jsp">Irayz Butterfly </a>
-																</h4>
-																<div class="grid-price mt-2">
-																	<span class="money ">$281.00</span>
-																</div>
-															</div>
-															<ul class="stars">
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Irayz Butterfly">
-																<input type="hidden" name="amount" value="281.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
-																	<i class="fas fa-cart-plus"></i>
-																</button>
-															</form>
-
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="gd-box-info text-center">
-									<div class="product-men women_two bot-gd">
-										<div class="product-googles-info slide-img googles">
-											<div class="men-pro-item">
-												<div class="men-thumb-item">
-													<img src="images/s9.jpg" class="img-fluid" alt="">
-													<div class="men-cart-pro">
-														<div class="inner-men-cart-pro">
-															<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-														</div>
-													</div>
-													<span class="product-new-top">New</span>
-												</div>
-												<div class="item-info-product">
-
-													<div class="info-product-price">
-														<div class="grid_meta">
-															<div class="product_price">
-																<h4>
-																	<a href="single.jsp">Jerry Rectangular </a>
-																</h4>
-																<div class="grid-price mt-2">
-																	<span class="money ">$525.00</span>
-																</div>
-															</div>
-															<ul class="stars">
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Jerry Rectangular ">
-																<input type="hidden" name="amount" value="525.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
-																	<i class="fas fa-cart-plus"></i>
-																</button>
-															</form>
-
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="gd-box-info text-center">
-									<div class="product-men women_two bot-gd">
-										<div class="product-googles-info slide-img googles">
-											<div class="men-pro-item">
-												<div class="men-thumb-item">
-													<img src="images/s10.jpg" class="img-fluid" alt="">
-													<div class="men-cart-pro">
-														<div class="inner-men-cart-pro">
-															<a href="single.jsp" class="link-product-add-cart">Quick View</a>
-														</div>
-													</div>
-													<span class="product-new-top">New</span>
-												</div>
-												<div class="item-info-product">
-
-													<div class="info-product-price">
-														<div class="grid_meta">
-															<div class="product_price">
-																<h4>
-																	<a href="single.jsp">Herdy Wayfarer </a>
-																</h4>
-																<div class="grid-price mt-2">
-																	<span class="money ">$325.00</span>
-																</div>
-															</div>
-															<ul class="stars">
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-half-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-																<li>
-																	<a href="#">
-																		<i class="fa fa-star-o" aria-hidden="true"></i>
-																	</a>
-																</li>
-															</ul>
-														</div>
-														<div class="googles single-item hvr-outline-out">
-															<form action="#" method="post">
-																<input type="hidden" name="cmd" value="_cart">
-																<input type="hidden" name="add" value="1">
-																<input type="hidden" name="googles_item" value="Herdy Wayfarer">
-																<input type="hidden" name="amount" value="325.00">
-																<button type="submit" class="googles-cart pgoogles-cart">
-																	<i class="fas fa-cart-plus"></i>
-																</button>
-															</form>
-
-														</div>
-													</div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							</c:forEach>
+							
 						</div>
 					</div>
 				</div>
@@ -648,7 +225,7 @@
 				<div class="row galsses-grids pt-lg-5 pt-3">
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner4.jpg" alt="" class="img-fluid">
+							<img src="images/底1.jpg" alt="" class="img-fluid">
 							<figcaption>
 								<h3>Editor's
 									<span>Pick</span>
@@ -659,7 +236,7 @@
 					</div>
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner1.jpg" alt="" class="img-fluid">
+							<img src="images/底2.jpg" alt="" class="img-fluid">
 							<figcaption>
 								<h3>Editor's
 									<span>Pick</span>
@@ -681,7 +258,7 @@
 							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Satisfaction Guaranteed</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
-								<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+								<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
@@ -693,7 +270,7 @@
 							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Fast Shipping</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
-								<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+								<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
@@ -705,7 +282,7 @@
 							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">UV Protection</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
-								<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+								<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
@@ -769,8 +346,8 @@
 		var d = new Date();
 		simplyCountdown('simply-countdown-custom', {
 			year: d.getFullYear(),
-			month: d.getMonth() + 2,
-			day: 5
+			month: d.getMonth() + 1,
+			day: 8
 		});
 	</script>
 <!--// 倒计时 -->

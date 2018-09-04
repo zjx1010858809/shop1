@@ -8,6 +8,6 @@ public interface orders_details_service {
 	
 	public void insert(orders_details d);
 	
-	public List<orders_details> myorders(int user_id);
+	public List<orders_details> myproduct(int user_id);
 
 }

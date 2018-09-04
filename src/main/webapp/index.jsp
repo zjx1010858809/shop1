@@ -29,38 +29,16 @@
 				</ol>
 				<div class="carousel-inner" role="listbox">
 					<div class="carousel-item active">
-						<div class="carousel-caption text-center">
-							<h3>Men’s eyewear
-								<span>Cool summer sale 50% off</span>
-							</h3>
-							<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-						</div>
+						
 					</div>
 					<div class="carousel-item item2">
-						<div class="carousel-caption text-center">
-							<h3>Women’s eyewear
-								<span>Want to Look Your Best?</span>
-							</h3>
-							<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-
-						</div>
+						
 					</div>
 					<div class="carousel-item item3">
-						<div class="carousel-caption text-center">
-							<h3>Men’s eyewear
-								<span>Cool summer sale 50% off</span>
-							</h3>
-							<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-
-						</div>
+						
 					</div>
 					<div class="carousel-item item4">
-						<div class="carousel-caption text-center">
-							<h3>Women’s eyewear
-								<span>Want to Look Your Best?</span>
-							</h3>
-							<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-						</div>
+						
 					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -129,7 +107,7 @@
 					<div class="col-md-12 middle-slider my-4">
 						<div class="middle-text-info ">
 
-							<h3 class="tittle-w3layouts two text-center my-lg-4 mt-3">Summer Flash sale</h3>
+							<h3 class="tittle-w3layouts two text-center my-lg-4 mt-3">Flash sale</h3>
 <!-- 倒计时 -->				<div class="simply-countdown-custom" id="simply-countdown-custom"></div>
 
 						</div>
@@ -247,7 +225,7 @@
 				<div class="row galsses-grids pt-lg-5 pt-3">
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner4.jpg" alt="" class="img-fluid">
+							<img src="images/底1.jpg" alt="" class="img-fluid">
 							<figcaption>
 								<h3>Editor's
 									<span>Pick</span>
@@ -258,7 +236,7 @@
 					</div>
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner1.jpg" alt="" class="img-fluid">
+							<img src="images/底2.jpg" alt="" class="img-fluid">
 							<figcaption>
 								<h3>Editor's
 									<span>Pick</span>
@@ -280,7 +258,7 @@
 							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Satisfaction Guaranteed</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
-								<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+								<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
@@ -292,7 +270,7 @@
 							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Fast Shipping</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
-								<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+								<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
@@ -304,7 +282,7 @@
 							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">UV Protection</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
-								<a href="shop.jsp" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+								<a href="#" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
@@ -369,7 +347,7 @@
 		simplyCountdown('simply-countdown-custom', {
 			year: d.getFullYear(),
 			month: d.getMonth() + 1,
-			day: 5
+			day: 8
 		});
 	</script>
 <!--// 倒计时 -->

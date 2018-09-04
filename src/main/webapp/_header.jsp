@@ -151,7 +151,7 @@
 <!-- 搜索 -->
 			<div style="width: 200px;float: right;">
 				<form action="product_index" method="post" class="d-flex">
-						<input class="form-control" name="txt" type="text" placeholder="商品名...">
+						<input class="form-control" name="txt" type="text" placeholder="商品名..." value="${txt}">
 						<button type="submit" class="btn btn-primary submit ">
 							<i class="fas fa-search"></i>
 						</button>

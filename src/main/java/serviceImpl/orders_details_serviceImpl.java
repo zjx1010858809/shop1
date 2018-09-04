@@ -19,9 +19,8 @@ public class orders_details_serviceImpl implements orders_details_service {
 		
 	}
 
-	public List<orders_details> myorders(int user_id) {
-		return ddao.myorders(user_id);
+	public List<orders_details> myproduct(int user_id) {
+		return ddao.myproduct(user_id);
 	}
 	
-
 }

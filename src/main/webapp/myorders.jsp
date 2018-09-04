@@ -12,7 +12,30 @@
 	<link rel="shortcut icon" href="images/001.jpg">
 	<link href="css/order.css" rel='stylesheet' type='text/css' />
 	
+	<script type="text/javascript">
+	function topay(id) {
+		location.href="user_topay?id="+id;
+	}
+	function sure(id) {
+		if(confirm("确认收货?")){
+			$.ajax({
+				url:"user_sure",
+				type:"post",
+				data:{id:id},
+				success:function(res){
+					if(res.c==1){
+						alert("已确认收货")；
+						location.href.reload();
+					}else{
+						alert("请重新操作");
+					}
+				}
+			});
+		}
+		
+	}
 	
+	</script>
 </head>
 <body>
 
@@ -44,28 +67,31 @@
         <ol>
             <p>${r.date}&nbsp;&nbsp;&nbsp;&nbsp;订单号：${r.code}</p>
             <c:if test="${r.status==0}">
-                <button style="float: right;margin-top: 10px;">去支付</button>
+                <button onclick="topay(${r.id});" type="button" style="float: right;margin-top: 10px;">去支付</button>
             </c:if>
             <c:if test="${r.status==1}">
                 <a style="margin-right:0px;width:100px; margin-top: 10px;">等待发货</a>
             </c:if>
             <c:if test="${r.status==2}">
-                <button type="button" style="float: right;margin-top: 10px;">确认收货</button>
+                <button onclick="sure(${r.id});" type="button" style="float: right;margin-top: 10px;">确认收货</button>
             </c:if>
             <c:if test="${r.status==3}">
-                <button style="float: right;margin-top: 10px;">去评价</button>
+                <button onclick="sure(${r.id});" style="float: right;margin-top: 10px;">去评价</button>
             </c:if>
         </ol>
+        
+        <c:forEach items="${myproduct}" var="p">
+        <c:if test="${r.id==p.orders_id}">
         <div>
         	<ul>
             	<li>
-            		<img alt="" src="${r.pic}" style="width: 90px;height: 90px;">
+            		<img alt="" src="${p.pic}" style="width: 90px;height: 90px;">
             	</li>
             	<li>
-                	<p style="width: 80px;">${r.fullname}</p>
+                	<p style="width: 80px;">${p.fullname}</p>
                 </li>
-                <li class="price">¥${r.nowprice}</li>
-                <li class="price">x${r.count}</li>
+                <li class="price">¥${p.nowprice}</li>
+                <li class="price">x${p.count}</li>
                 <li>
                 	<a href="#">联系我们</a>
                     <a href="#" class="text02">申请售后</a>
@@ -80,7 +106,8 @@
                 </li>
             </ul>
         </div>
-        
+        </c:if>
+        </c:forEach>
         
         </c:forEach>
         

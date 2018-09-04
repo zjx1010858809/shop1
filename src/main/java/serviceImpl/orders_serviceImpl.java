@@ -2,6 +2,7 @@ package serviceImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -119,6 +120,26 @@ public class orders_serviceImpl implements orders_service {
 		
 		sdao.insert(os);
 		return true;
+	}
+
+	public void supdate(int status, String code) {
+		odao.supdate(status, code);
+	}
+
+	public int insert(orders o) {
+		return odao.insert(o);
+	}
+
+	public List<orders> selebyuserid(int user_id) {
+		return odao.selebyuserid(user_id);
+	}
+
+	public orders selebyid(int id) {
+		return odao.selebyid(id);
+	}
+
+	public int sure(int id) {
+		return odao.sure(id);
 	}
 
 	
