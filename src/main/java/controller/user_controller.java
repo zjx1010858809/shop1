@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import entity.shopcar;
 import entity.user;
+import service.address_service;
 import service.orders_service;
 import service.product_service;
 import service.type_service;
@@ -30,13 +31,15 @@ public class user_controller {
 	product_service pservice;
 	@Autowired
 	orders_service oservice;
+	@Autowired
+	address_service aservice;
 	
 	@RequestMapping("user_login")
 	public @ResponseBody JsonUtil login(user u,HttpSession session) {
 		user user=service.login(u);
 		if(user!=null) {
 				session.setAttribute("user",user);
-				session.setMaxInactiveInterval(600);
+				session.setMaxInactiveInterval(6000);
 				return new JsonUtil(1,"");
 		}else {
 			return new JsonUtil(0,"账号密码错误！");
@@ -117,8 +120,10 @@ public class user_controller {
 	}
 	
 	@RequestMapping("user_pay")
-	public @ResponseBody JsonUtil payfor(String code) {
+	public @ResponseBody JsonUtil payfor(String code,Integer id) {
 		if(oservice.payfor(1,code)) {
+			System.out.println(code);
+			oservice.addr(id, code);
 			return new JsonUtil(1, "支付成功！");
 		}else {
 			return new JsonUtil(0, "支付失败请重新支付！");
@@ -126,7 +131,9 @@ public class user_controller {
 	}
 	
 	@RequestMapping("user_topay")
-	public String topay(Integer id,ModelMap mv) {
+	public String topay(Integer id,ModelMap mv,HttpSession session) {
+		user u=(user) session.getAttribute("user");
+		mv.put("myaddress",aservice.select(u.getId()));
 		mv.put("orders",oservice.selebyid(id));
 		return "pay2";
 	}
@@ -138,5 +145,11 @@ public class user_controller {
 		}
 		return new JsonUtil(0,"");
 	}
+	@RequestMapping("ucut")
+	public String ucut(HttpSession session) {
+		session.removeAttribute("user");
+		return "redirect:product_index";
+	}
+	
 
 }

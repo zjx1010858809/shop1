@@ -22,7 +22,7 @@ public interface orders_dao {
 	@Update("update orders set status=#{status} where code=#{code}")
 	public void supdate(@Param("status") int status,@Param("code") String code);
 	
-	@Select("select * from orders where user_id=#{user_id}")
+	@Select("select * from orders where user_id=#{user_id} order by id desc")
 	public List<orders> selebyuserid(int user_id);
 	
 	@Select("select * from orders where id=#{id}")
@@ -30,4 +30,7 @@ public interface orders_dao {
 	
 	@Update("update orders set status=3 where id=#{id}")
 	public int sure(int id);
+	
+	@Update("update orders set address_id=#{address} where code=#{code}")
+	public int addr(@Param("address_id") int id,@Param("code") String code);
 }

@@ -142,6 +142,10 @@ public class orders_serviceImpl implements orders_service {
 		return odao.sure(id);
 	}
 
+	public int addr(int id, String code) {
+		return odao.addr(id, code);
+	}
+
 	
 
 }

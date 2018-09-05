@@ -6,8 +6,6 @@
 <html lang="zxx">
 
 <head>
-<title>Single</title>
-
 <link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">

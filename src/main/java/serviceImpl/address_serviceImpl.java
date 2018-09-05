@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.address_dao;
 import entity.address;
@@ -15,6 +16,19 @@ public class address_serviceImpl implements address_service {
 
 	public List<address> select(int user_id) {
 		return adao.select(user_id);
+	}
+
+	@Transactional
+	public int addaddr(address ad) {
+		return adao.addaddr(ad);
+	}
+
+	public address selectbyid(int id) {
+		return adao.selectbyid(id);
+	}
+
+	public void editaddr(address ad) {
+		adao.editaddr(ad);
 	}
 	
 }

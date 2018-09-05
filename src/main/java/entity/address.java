@@ -7,7 +7,7 @@ public class address {
 	String addr;
 	String name;
 	String tel;
-	int status;
+	int status=0;
 	
 	
 	public int getId() {

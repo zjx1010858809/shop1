@@ -5,13 +5,12 @@
 <html lang="zxx">
 
 <head>
-	<title>Checkout</title>
-
 	<link rel="stylesheet" type="text/css" href="css/checkout.css">
 	<link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="css/shoppay.css">
 	<link rel="stylesheet" type="text/css" href="css/pay.css">
+	<link href="css/order.css" rel='stylesheet' type='text/css' />
 	
 </head>
 
@@ -40,15 +39,39 @@
 	</div>
 	<!--内容-->
 <div id="contentCon">
+ <div class="right" style="width: 1200px;">
+	<h2>选择地址</h2>
+<c:forEach items="${myaddress}" var="r">
+        <hr>
+        <div>
+        <ul class="rem2" addr_id="${r.id}" style="width: 1200px;size: 40px;">
+        	<li style="margin-left: 50px;width: 80px;">${r.name}${r.id}</li>
+            <li style="margin-left: 30px;width: 100px;">${r.tel}</li>
+            <li style="margin-left: 80px;width: 120px;">
+                <p>${r.zone}</p>
+            </li>
+            <li style="margin-left: 70px;width: 120px;">
+                <p>${r.addr}</p>
+            </li>
+            <li style="margin-left: 60px;width: 60px;">
+               	<input class="chk" type="radio" name="addr">
+            </li>
+        </ul>
+        </div>
+        <hr>
+        </c:forEach>
+</div>
+<hr>
 	<div>
     	<span>
         	<h2>选择付款方式</h2>
             <p>订单号：<a id="currentcode">${orders.code}</a></p>
         </span>
-        <button onclick="payfor();" type="button" style="background-color: aqua;">支付</button>
+        
         <ol>
         	<p>应付：</p>
-            <span>¥${orders.nowamount}</span>
+            <span style="margin-top: 8px;">¥${orders.nowamount}</span>
+            <button onclick="payfor();" style="margin-top: 60px;" class="layui-btn layui-btn-normal layui-btn-radius">支付</button>
         </ol>
     </div>
     <ul>
@@ -102,21 +125,40 @@
 	<script>
 //支付
    function payfor(){
+		  var id;
+		$(".chk").each(function(){
+			 if($(this).prop("checked")){
+				 var parent=$(this).parents(".rem2");
+				 id=parseInt(parent.attr("addr_id"));
+			      
+			 }
+		});
+	   if(id==null){
+		   layer.msg('请选择地址',{
+			   time:1000
+		   });
+	   }else{
+	
 	var code=$("#currentcode").text();
 	$.ajax({
 		url:"user_pay",
 		type:"post",
-		data:{code:code},
+		data:{code:code,id:id},
 		success:function(res){
 			if(res.c==1){
-				alert(res.msString);
+				layer.msg('支付成功!',{
+					time:1000
+				});
 				location.href="myorders";
 			}else
 				if(res.c==0){
-					alert(res.msString);
+					layer.msg('支付失败请重新支付!',{
+						time:1000
+					});
 				}
 		}
 	});
+	   } 
 }
 	
     </script>

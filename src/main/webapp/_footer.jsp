@@ -88,7 +88,7 @@
 			</div>
 			<div class="copyright-w3layouts mt-4">
 				<p class="copy-right text-center ">
-					Copyright &copy; 2018.Company name All rights reserved.
+					Copyright &copy; 2018.Company JiaXiangShop.
 				</p>
 			</div>
 		</div>

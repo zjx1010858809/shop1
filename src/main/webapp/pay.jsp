@@ -5,14 +5,12 @@
 <html lang="zxx">
 
 <head>
-	<title>Checkout</title>
-
 	<link rel="stylesheet" type="text/css" href="css/checkout.css">
 	<link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="css/shoppay.css">
 	<link rel="stylesheet" type="text/css" href="css/pay.css">
-	
+	<link href="css/order.css" rel='stylesheet' type='text/css' />
 </head>
 
 <body>
@@ -40,15 +38,19 @@
 	</div>
 	<!--内容-->
 <div id="contentCon">
+
+
+
 	<div>
     	<span>
         	<h2>选择付款方式</h2>
             <p>订单号：<a id="currentcode">${sessionScope.code}</a></p>
         </span>
-        <button onclick="payfor();" type="button" style="background-color: aqua;">支付</button>
+        
         <ol>
         	<p>应付：</p>
-            <span>¥${sessionScope.nowamount}</span>
+            <span style="margin-top: 8px;">¥${sessionScope.nowamount}</span>
+            <button onclick="payfor();" style="margin-top: 60px;" class="layui-btn layui-btn-normal layui-btn-radius">支付</button>
         </ol>
     </div>
     <ul>
@@ -101,24 +103,43 @@
 	<script src="js/easy-responsive-tabs.js"></script>
 	<script>
 //支付
-   function payfor(){
+ function payfor(){
+		  var id;
+		$(".chk").each(function(){
+			 if($(this).prop("checked")){
+				 var parent=$(this).parents(".rem2");
+				 id=parseInt(parent.attr("addr_id"));
+			      
+			 }
+		});
+	   if(id==null){
+		   layer.msg('请选择地址',{
+			   time:1000
+		   });
+	   }else{
+	
 	var code=$("#currentcode").text();
 	$.ajax({
 		url:"user_pay",
 		type:"post",
-		data:{code:code},
+		data:{code:code,id:id},
 		success:function(res){
 			if(res.c==1){
-				alert(res.msString);
+				layer.msg('支付成功!',{
+					time:1000
+				});
 				location.href="myshopcar?id=${sessionScope.user.id}";
 			}else
 				if(res.c==0){
-					alert(res.msString);
+					layer.msg('支付失败请重新支付!',{
+						time:1000
+					});
 				}
-		}
-	});
-}
-	
+			}
+		});
+	}
+	   }
+
     </script>
 
 </body>

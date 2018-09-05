@@ -5,7 +5,6 @@
 <html lang="zxx">
 
 <head>
-	<title>Checkout</title>
 
 	<link rel="stylesheet" type="text/css" href="css/checkout.css">
 	<link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />

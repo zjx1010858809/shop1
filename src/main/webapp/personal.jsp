@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset=utf-8>
-<title>Home</title>
 	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
 	<link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -18,14 +17,14 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <a href="#">切换账号</a>
+        <a href="ucut">切换账号</a>
         <span></span>
         <ul>
         	<li><a href="#" class="my">个人信息</a></li>
             <li><a href="myorders">我的订单</a></li>
             <li><a href="#">我的钱包</a></li>
             <li><a href="#">优惠特权</a></li>
-            <li><a href="#">地址管理</a></li>
+            <li><a href="myaddress">地址管理</a></li>
             <li><a href="#">账号设置</a></li>
             <li><a href="#">我的足迹</a></li>
             <li><a href="#">收藏夹</a></li>

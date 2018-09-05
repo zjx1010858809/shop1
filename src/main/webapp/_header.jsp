@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset=UTF-8>
+<title>JiaXiangShop</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords" content="" />
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -13,7 +14,8 @@
 <link href="http://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
 <link href="css/fontawesome-all.css" rel="stylesheet">
-
+<link href="layui/css/layui.css" rel="stylesheet">
+<script src="layui/layui.all.js"></script>
 
 <script type="text/javascript">
 	    function myshopcar(id) {
@@ -220,7 +222,7 @@
 							<a class="nav-link" href="contact.jsp">Contact</a>
 						</li> -->
 						<li class="nav-item">
-							<a class="nav-link" onclick="personal(${sessionScope.user.id});" >个人中心</a>
+							<a class="nav-link ml-lg-0" onclick="personal(${sessionScope.user.id});" >个人中心</a>
 						</li>
 					</ul>
 				</div>

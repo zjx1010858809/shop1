@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset=utf-8>
-<title>Home</title>
 	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
 	<link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -24,8 +23,8 @@
 				data:{id:id},
 				success:function(res){
 					if(res.c==1){
-						alert("已确认收货")；
-						location.href.reload();
+						alert("已确认收货");
+						location.reload();
 					}else{
 						alert("请重新操作");
 					}
@@ -42,14 +41,14 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <a href="#">切换账号</a>
+        <a href="ucut">切换账号</a>
         <span></span>
         <ul>
         	<li><a href="personal">个人信息</a></li>
             <li><a href="#" class="my">我的订单</a></li>
             <li><a href="#">我的钱包</a></li>
             <li><a href="#">优惠特权</a></li>
-            <li><a href="#">地址管理</a></li>
+            <li><a href="myaddress">地址管理</a></li>
             <li><a href="#">账号设置</a></li>
             <li><a href="#">我的足迹</a></li>
             <li><a href="#">收藏夹</a></li>
@@ -70,13 +69,13 @@
                 <button onclick="topay(${r.id});" type="button" style="float: right;margin-top: 10px;">去支付</button>
             </c:if>
             <c:if test="${r.status==1}">
-                <a style="margin-right:0px;width:100px; margin-top: 10px;">等待发货</a>
+                <a style="float: right;width:100px; margin-top: 10px;">等待发货</a>
             </c:if>
             <c:if test="${r.status==2}">
                 <button onclick="sure(${r.id});" type="button" style="float: right;margin-top: 10px;">确认收货</button>
             </c:if>
             <c:if test="${r.status==3}">
-                <button onclick="sure(${r.id});" style="float: right;margin-top: 10px;">去评价</button>
+                <a <%-- onclick="assess(${r.id});" --%> style="float: right;width:100px;margin-top: 10px;">订单已完成</a>
             </c:if>
         </ol>
         
@@ -97,7 +96,6 @@
                     <a href="#" class="text02">申请售后</a>
                 </li>
                 <li>
-                	<a href="#">订单详情</a>
                     <a href="#" class="text02">查看物流</a>
                 </li>
                 <li>

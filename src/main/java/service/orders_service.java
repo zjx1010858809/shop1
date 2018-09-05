@@ -28,5 +28,7 @@ public interface orders_service {
 	public orders selebyid(int id);
 	
 	public int sure(int id);
+	
+	public int addr(int id,String code);
 
 }
