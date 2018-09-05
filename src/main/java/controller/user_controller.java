@@ -84,7 +84,7 @@ public class user_controller {
 	public @ResponseBody JsonUtil changercount(shopcar sh,HttpSession session) {
 		if(session.getAttribute("user")!=null) {
 			if(service.changercount(sh)!=0) {
-				return new JsonUtil(1, "操作成功");
+				return new JsonUtil(1, "");
 			}else {
 				return new JsonUtil(2, "操作失败");
 			}

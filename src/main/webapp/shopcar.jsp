@@ -138,10 +138,14 @@
 	function changercount(id,count){
 		$.post("changercount",{id:id,count:count},function(res){
 				if(res.c==2){
-					alert(res.msString);
+					layer.msg(res.msString,{
+		    			time:1000
+		    		});
 				}else
 					if(res.c==3){
-						alert(res.msString);
+						layer.msg(res.msString,{
+			    			time:1000
+			    		});
 					};
 		},"json");
 	};
@@ -219,10 +223,14 @@
 							});
 						}else
 							if(res.c==2){
-								alert(res.msString);
+								layer.msg(res.msString,{
+					    			time:1000
+					    		});
 							}else
 								if(res.c==3){
-									alert(res.msString);
+									layer.msg(res.msString,{
+						    			time:1000
+						    		});
 								}
 					}
 				});
@@ -260,15 +268,21 @@ if(data!=""){
 						   }
 					   }); */
 			}else if(res.c==2){
-					alert(res.msString);
+				layer.msg(res.msString,{
+	    			time:1000
+	    		});
 				}else
 					if(res.c==0){
-						alert(res.msString);
+						layer.msg(res.msString,{
+			    			time:1000
+			    		});
 						}
         	}
         });
 	}else{
-		alert("请选择要购买的商品");
+		layer.msg('请选择要购买的商品',{
+			time:1000
+		});
 	}
 }
 

@@ -20,7 +20,9 @@
 <script type="text/javascript">
 	    function myshopcar(id) {
 	    	if(id==null){
-	    		alert("请先登录");
+	    		layer.msg('请先登录',{
+	    			time:1000
+	    		});
 	    	}else{
 	    		location.href='myshopcar?id='+id;
 	    	}
@@ -28,7 +30,9 @@
 	    
 	    function personal(id) {
 	    	if(id==null){
-	    		alert("请先登录");
+	    		layer.msg('请先登录',{
+	    			time:1000
+	    		});
 	    	}else{
 	    		location.href='personal';
 	    	}

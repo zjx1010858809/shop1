@@ -417,10 +417,14 @@ function incar() {
 		type:'post',
 		success:function(res){
 			if(res.c==0){
-				alert(res.msString);
+				layer.msg(res.msString,{
+	    			time:1000
+	    		});
 			}else
 				if(res.c==1){
-					alert(res.msString);
+					layer.msg(res.msString,{
+		    			time:1000
+		    		});
 				}
 		}
 	});
@@ -435,10 +439,14 @@ function collect() {
 		type:'post',
 		success:function(res){
 			if(res.c==0){
-				alert(res.msString);
+				layer.msg(res.msString,{
+	    			time:1000
+	    		});
 			}else
 				if(res.c==1){
-					alert(res.msString);
+					layer.msg(res.msString,{
+		    			time:1000
+		    		});
 				}
 		}
 	});

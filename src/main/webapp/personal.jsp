@@ -17,7 +17,7 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <a href="ucut">切换账号</a>
+        <a href="ucut">退出账号</a>
         <span></span>
         <ul>
         	<li><a href="#" class="my">个人信息</a></li>

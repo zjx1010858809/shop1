@@ -169,7 +169,9 @@
 				type:"post",
 				success:function(json){
 					if(json.c==0){
-						alert(json.msString);
+						layer.msg(json.msString,{
+			    			time:1000
+			    		});
 					}else
 						if(json.c==1){
 							location.href="product_index";
@@ -183,13 +185,19 @@
 			var p1=$("#rpassword1").val();
 			var p2=$("#rpassword2").val();
 			if(tel==""){
-				alert("手机号不能为空");
+				layer.msg('手机号不能为空',{
+	    			time:1000
+	    		});
 			}else
 				if(email==null||email==""){
-					alert("邮箱不能为空");
+					layer.msg('邮箱不能为空',{
+		    			time:1000
+		    		});
 				}else
 					if(p1==null||p1==""){
-						alert("密码不能为空");
+						layer.msg('密码不能为空',{
+			    			time:1000
+			    		});
 					}else
 					if(p1==p2){
 					$.ajax({
@@ -198,15 +206,24 @@
 						type:"post",
 						success:function(json){
 							if(json.c==1){
-								alert(json.msString);
-								location.href="product_index";
+								layer.msg(json.msString,{
+					    			time:1000
+					    		});
+								setTimeout(function(){
+									location.href="product_index";
+								}, 1000);
+								
 							}else{
-								alert(json.msString);
+								layer.msg(json.msString,{
+					    			time:1000
+					    		});
 							}
 						}
 					});
 				}else{
-					alert("两次密码不一致！");
+					layer.msg('两次密码不一致！',{
+		    			time:1000
+		    		});
 				}
 			}
 	</script>

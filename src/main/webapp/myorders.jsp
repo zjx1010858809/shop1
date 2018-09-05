@@ -23,10 +23,16 @@
 				data:{id:id},
 				success:function(res){
 					if(res.c==1){
-						alert("已确认收货");
-						location.reload();
+						layer.msg('已确认收货',{
+			    			time:1000
+			    		});
+						setTimeout(function(){
+							location.reload();
+						}, 1000);
 					}else{
-						alert("请重新操作");
+						layer.msg('请重新操作',{
+			    			time:1000
+			    		});
 					}
 				}
 			});
@@ -41,7 +47,7 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <a href="ucut">切换账号</a>
+        <a href="ucut">退出账号</a>
         <span></span>
         <ul>
         	<li><a href="personal">个人信息</a></li>
