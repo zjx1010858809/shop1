@@ -146,10 +146,13 @@
 		data:{code:code,id:id},
 		success:function(res){
 			if(res.c==1){
+				
 				layer.msg('支付成功!',{
-					time:1000
+					time:3000
 				});
-				location.href="myorders";
+				setTimeout(function(){
+					location.href="myorders";
+				}, 1000);
 			}else
 				if(res.c==0){
 					layer.msg('支付失败请重新支付!',{

@@ -109,7 +109,6 @@
 			 if($(this).prop("checked")){
 				 var parent=$(this).parents(".rem2");
 				 id=parseInt(parent.attr("addr_id"));
-			      
 			 }
 		});
 	   if(id==null){
@@ -128,7 +127,9 @@
 				layer.msg('支付成功!',{
 					time:1000
 				});
-				location.href="myshopcar?id=${sessionScope.user.id}";
+				setTimeout(function(){
+					location.href="myshopcar?id=${sessionScope.user.id}";
+				}, 1000);
 			}else
 				if(res.c==0){
 					layer.msg('支付失败请重新支付!',{

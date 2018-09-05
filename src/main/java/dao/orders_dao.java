@@ -31,6 +31,6 @@ public interface orders_dao {
 	@Update("update orders set status=3 where id=#{id}")
 	public int sure(int id);
 	
-	@Update("update orders set address_id=#{address} where code=#{code}")
+	@Update("update orders set address_id=#{address_id} where code=#{code}")
 	public int addr(@Param("address_id") int id,@Param("code") String code);
 }
