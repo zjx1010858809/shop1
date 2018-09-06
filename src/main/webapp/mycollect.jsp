@@ -107,7 +107,7 @@ function incar(id) {
 
 function delcollect(cid) {
 	layer.confirm('确认删除?',{
-		btn:['确定','取消']
+		btn:['确定','取消'],title:'移出收藏夹'
 	},function(){
 		$.ajax({
 			url:"delcollect",

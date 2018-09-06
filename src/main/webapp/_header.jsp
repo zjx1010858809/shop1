@@ -41,7 +41,7 @@ function personal(id) {
 //退出
 function uout(){
 	layer.confirm('确认退出?',{
-		btn:['去意义绝','再想想吧']
+		btn:['去意义绝','再想想吧'],title:'退出登录'
 	},function(){
 		location.href="uout";
 	},function(){

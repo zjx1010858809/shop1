@@ -30,8 +30,8 @@
 		});
 	}
 	function deladdr(id){
-		layer.confirm('确认删除?',{
-			btn:['确定','取消']
+		layer.confirm('确定要删除?',{
+			btn:['已转移阵地','先留着吧'],title:'删除地址'
 		},function(){
 			$.ajax({
 				url:'deladdr',

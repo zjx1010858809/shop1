@@ -11,7 +11,7 @@ import util.SearchInfo;
 @Repository
 public interface product_dao {
 	
-	@Select("select * from product ${where}")
+	@Select("select * from product ${where} having status=0")
 	public List<product> selectall(SearchInfo info);
 	
 	@Select("select * from product where id=#{id}")

@@ -210,32 +210,36 @@
 		$('.close1').on('click', function () {
 			var o=$(event.target);
 			var id=o.prev().val();
-			if(confirm("确认要删除吗?")){
-				$.ajax({
-					url:"outcar",
-					type:"post",
-					data:{id:id},
-					success:function(res){
-						if(res.c==1){
-							o.parents(".rem1").fadeOut('slow', function () {
-							o.parents(".rem1").remove();
-							alljs();
-							});
-						}else
-							if(res.c==2){
-								layer.msg(res.msString,{
-					    			time:1000
-					    		});
+				layer.confirm('真的要狠心放弃么?',{
+					btn:['我想好了','再想想吧'],title:'移出购物车'
+				},function(){
+					$.ajax({
+						url:"outcar",
+						type:"post",
+						data:{id:id},
+						success:function(res){
+							if(res.c==1){
+								o.parents(".rem1").fadeOut('slow', function () {
+								o.parents(".rem1").remove();
+								alljs();
+								});
 							}else
-								if(res.c==3){
+								if(res.c==2){
 									layer.msg(res.msString,{
 						    			time:1000
 						    		});
-								}
-					}
+								}else
+									if(res.c==3){
+										layer.msg(res.msString,{
+							    			time:1000
+							    		});
+									}
+						}
+					});
+				},function(){
+					layer.close();
 				});
-			}
-		});
+			});
 
 //结算点击事件
    function mysubmit(){

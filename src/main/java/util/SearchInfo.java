@@ -33,7 +33,7 @@ public class SearchInfo {
 			where=" where status=0 ";
 		}else {
 			this.txt = txt;
-			where=" where fullname like '%"+txt+"%' and status=0 ";
+			where=" where fullname like '%"+txt+"%' ";
 		}
 	}
 	
