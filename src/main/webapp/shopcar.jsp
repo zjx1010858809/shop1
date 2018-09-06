@@ -1,5 +1,6 @@
 <%@ page language="java" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="_header.jsp" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -82,7 +83,8 @@
 								</td>
 								<td class="invert">${r.fullname}</td>
 
-								<td class="invert l7">¥${r.nowprice*r.count}</td>
+
+								<td class="invert l7">¥<fmt:formatNumber value="${r.nowprice*r.count}" type="number" pattern="#.00" /></td>
 								<td class="invert">
 									<div class="rem">
 									<input type="hidden" name="id" value="${r.id}">
@@ -101,7 +103,7 @@
 				
 				<div class="all2">
 				<input type="checkbox" class="selectall" name="" id="" value="" /><span class="s1">全选</span><span class="s3">已选中商品</span>
-				<span class="s4">0</span><span class="s5">件</span><span class="s6">总价(元)：</span><span class="s7">￥0</span><button onclick="mysubmit();" class="s8">结算</button>
+				<span class="s4">0</span><span class="s5">件</span><span class="s6">总价(元)：</span><span class="s7">¥0.00</span><button onclick="mysubmit();" class="s8">结算</button>
 				</div>
 			</div>
 
@@ -162,7 +164,7 @@
 			   }
 		   });
 		   $(".s4").text(ccc);
-		   $(".s7").text("￥"+all.toFixed(1));
+		   $(".s7").text("¥"+all.toFixed(2));
 	   };
 	
 //合计点击事件
@@ -187,7 +189,7 @@
 			var id=parent.attr("myid");
 			var price=parent.find(".l5").text();
 			price=parseFloat(price.substring(1));
-			parent.find(".l7").text("￥"+(newVal*price).toFixed(1));				
+			parent.find(".l7").text("¥"+(newVal*price).toFixed(2));				
 			changercount(id,newVal);
 			alljs();
 			
@@ -202,7 +204,7 @@
 			var id=parent.attr("myid");
 			var price=parent.find(".l5").text();
 			price=parseFloat(price.substring(1));
-			parent.find(".l7").text("￥"+((divUpd.text())*price).toFixed(1));
+			parent.find(".l7").text("¥"+((divUpd.text())*price).toFixed(2));
 			changercount(id,divUpd.text());
 			alljs();
 		});
@@ -210,36 +212,64 @@
 		$('.close1').on('click', function () {
 			var o=$(event.target);
 			var id=o.prev().val();
-				layer.confirm('真的要狠心放弃么?',{
-					btn:['我想好了','再想想吧'],title:'移出购物车'
-				},function(){
-					$.ajax({
-						url:"outcar",
-						type:"post",
-						data:{id:id},
-						success:function(res){
-							if(res.c==1){
-								o.parents(".rem1").fadeOut('slow', function () {
-								o.parents(".rem1").remove();
-								alljs();
-								});
+			
+			layer.confirm('确认移除?',{
+				btn:['确定','取消'],title:'移除商品'
+			},function(){
+				$.ajax({
+					url:"outcar",
+					type:"post",
+					data:{id:id},
+					success:function(res){
+						if(res.c==1){
+							o.parents(".rem1").fadeOut('slow', function () {
+							o.parents(".rem1").remove();
+							alljs();
+							location.reload();
+							});
+						}else
+							if(res.c==2){
+								layer.msg(res.msString,{
+					    			time:1000
+					    		});
 							}else
-								if(res.c==2){
+								if(res.c==3){
 									layer.msg(res.msString,{
 						    			time:1000
 						    		});
-								}else
-									if(res.c==3){
-										layer.msg(res.msString,{
-							    			time:1000
-							    		});
-									}
-						}
-					});
-				},function(){
-					layer.close();
+								}
+					}
 				});
+			},function(){
+				layer.close();
 			});
+			
+			/* if(confirm('确认移除?')){
+				$.ajax({
+					url:"outcar",
+					type:"post",
+					data:{id:id},
+					success:function(res){
+						if(res.c==1){
+							o.parents(".rem1").fadeOut('slow', function () {
+							o.parents(".rem1").remove();
+							alljs();
+							});
+						}else
+							if(res.c==2){
+								layer.msg(res.msString,{
+					    			time:1000
+					    		});
+							}else
+								if(res.c==3){
+									layer.msg(res.msString,{
+						    			time:1000
+						    		});
+								}
+					}
+				});
+			} */
+		})
 
 //结算点击事件
    function mysubmit(){
