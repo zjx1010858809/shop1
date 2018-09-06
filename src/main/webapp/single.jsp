@@ -64,19 +64,14 @@
 						<h2>${single.fullname}</h2>
 						<h6>${single.tip}</h6>
 						<p>
-							<span class="item_price" style="color: red;">${single.nowprice}</span>
-							<del>${single.price}</del>
+							<span class="item_price" style="color: red;">¥${single.nowprice}</span>
+							<del>¥${single.price}</del>
 						</p>
 						<div class="rating1">
 							活动 :<a style="color: navy;">${single.activity}</a>
 						</div>
 						<div class="description">
-							
-							<!-- <form action="#" method="post">
-								<input class="form-control" type="text" name="Email"
-									placeholder="请输入收货地址..." required=""> <input
-									type="submit" value="确定">
-							</form> -->
+						
 						</div>
 						<div class="color-quality">
 							<div class="color-quality-right">

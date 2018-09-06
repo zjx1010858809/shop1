@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -23,4 +24,7 @@ public interface address_dao {
 	
 	@Update("update address set zone=#{zone},addr=#{addr},name=#{name},tel=#{tel} where id=#{id}")
 	public void editaddr(address ad);
+	
+	@Delete("delete from address where id=#{id}")
+	public void deladdr(int id);
 }

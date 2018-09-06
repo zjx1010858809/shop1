@@ -30,5 +30,9 @@ public class address_serviceImpl implements address_service {
 	public void editaddr(address ad) {
 		adao.editaddr(ad);
 	}
+
+	public void deladdr(int id) {
+		adao.deladdr(id);
+	}
 	
 }

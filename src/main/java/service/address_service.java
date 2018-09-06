@@ -10,4 +10,5 @@ public interface address_service {
 	public int addaddr(address ad);
 	public address selectbyid(int id);
 	public void editaddr(address ad);
+	public void deladdr(int id);
 }

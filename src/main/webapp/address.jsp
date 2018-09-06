@@ -29,6 +29,28 @@
 			area:['600px','320px']
 		});
 	}
+	function deladdr(id){
+		layer.confirm('确认删除?',{
+			btn:['确定','取消']
+		},function(){
+			$.ajax({
+				url:'deladdr',
+				type:"post",
+				data:{id:id},
+				success:function(res){
+					if(res.c>0){
+						location.reload();
+					}else{
+						layer.msg('请重新操作',{
+							time:1000
+						});
+					}
+				}
+			});
+		},function(){
+			layer.close();
+		});
+	}
 	
 	</script>
 </head>
@@ -37,7 +59,7 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <a href="ucut">退出账号</a>
+        <a href="javascript:uout();">退出账号</a>
         <span></span>
         <ul>
         	<li><a href="personal">个人信息</a></li>
@@ -47,7 +69,7 @@
             <li><a href="#" class="my">地址管理</a></li>
             <li><a href="#">账号设置</a></li>
             <li><a href="#">我的足迹</a></li>
-            <li><a href="#">收藏夹</a></li>
+            <li><a href="mycollect">收藏夹</a></li>
         </ul>
     </div>
     <div class="right">
@@ -73,7 +95,8 @@
                 	<p>${r.addr}</p>
                 </li>
                 <li style="margin-left: 30px;width: 30px;">
-                	<input onclick="edit(${r.id});" type="button" style="float:right; height: 30px;"class="btn btn-primary radius" value="编辑">
+                	<input onclick="edit(${r.id});" type="button" style="margin-top: -40px;"class="btn btn-primary radius" value="编辑">
+                	<input onclick="deladdr(${r.id});" type="button" class="layui-btn layui-btn-sm layui-btn-danger" value="删除">
                 </li>
                
             </ul>

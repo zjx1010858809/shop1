@@ -17,7 +17,7 @@
 <div id="contentCon">
 	<div class="left">
     	<div></div>
-        <a href="ucut">退出账号</a>
+        <a href="javascript:uout();">退出账号</a>
         <span></span>
         <ul>
         	<li><a href="#" class="my">个人信息</a></li>
@@ -27,7 +27,7 @@
             <li><a href="myaddress">地址管理</a></li>
             <li><a href="#">账号设置</a></li>
             <li><a href="#">我的足迹</a></li>
-            <li><a href="#">收藏夹</a></li>
+            <li><a href="mycollect">收藏夹</a></li>
         </ul>
     </div>
     <div class="right">

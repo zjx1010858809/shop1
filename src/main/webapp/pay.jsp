@@ -40,6 +40,7 @@
 <div id="contentCon">
 <div class="right" style="width: 1200px;">
 	<h2>选择地址</h2>
+	<input class="btn btn-primary radius" onclick="add();" type="button" style="float: right;margin-top: -30px;" value="新增">
 <c:forEach items="${sessionScope.myaddress}" var="r">
         <hr>
         <div>
@@ -161,8 +162,16 @@
 			}
 		});
 	}
-	   }
-
+}
+//新增地址
+ function add() {
+ 		var layer=layui.layer;
+ 		layer.open({
+ 			type:2,
+ 			content:'addaddr.jsp',
+ 			area:['600px','320px']
+ 		});
+ 	}
     </script>
 
 </body>

@@ -18,25 +18,36 @@
 <script src="layui/layui.all.js"></script>
 
 <script type="text/javascript">
-	    function myshopcar(id) {
-	    	if(id==null){
-	    		layer.msg('请先登录',{
-	    			time:1000
-	    		});
-	    	}else{
-	    		location.href='myshopcar?id='+id;
-	    	}
-		}
-	    
-	    function personal(id) {
-	    	if(id==null){
-	    		layer.msg('请先登录',{
-	    			time:1000
-	    		});
-	    	}else{
-	    		location.href='personal';
-	    	}
-		}
+//购物车
+function myshopcar(id) {
+	if(id==null){
+	layer.msg('请先登录',{
+	time:1000
+	});
+	}else{
+	location.href='myshopcar?id='+id;
+	}
+}
+//个人中心
+function personal(id) {
+	if(id==null){
+	layer.msg('请先登录',{
+	time:1000
+	});
+	}else{
+	location.href='personal';
+	}
+}
+//退出
+function uout(){
+	layer.confirm('确认退出?',{
+		btn:['去意义绝','再想想吧']
+	},function(){
+		location.href="uout";
+	},function(){
+		layer.close();
+	});
+}
 	    </script>
 <!--返回时停留在之前浏览位置，有了这个可以清楚位置-->
 	<!-- <script>

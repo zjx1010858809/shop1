@@ -67,7 +67,7 @@
 										<img src="${r.pic}" style="width:80px;height: 100px;" class="img-responsive">
 									</a>
 								</td>
-								<td class="invert l5">￥${r.nowprice}</td>
+								<td class="invert l5">¥${r.nowprice}</td>
 								
 								<td class="invert">
 									<div class="quantity">
@@ -82,7 +82,7 @@
 								</td>
 								<td class="invert">${r.fullname}</td>
 
-								<td class="invert l7">￥${r.nowprice*r.count}</td>
+								<td class="invert l7">¥${r.nowprice*r.count}</td>
 								<td class="invert">
 									<div class="rem">
 									<input type="hidden" name="id" value="${r.id}">

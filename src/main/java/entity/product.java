@@ -20,6 +20,17 @@ public class product implements Serializable{
 	private String pics="";
 	private String comments ="";
 	
+	int cid;
+	
+	
+	
+	
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
 	private String[] statuss= {"有货","无货"};
 	private String type_name;
 	public int getId() {

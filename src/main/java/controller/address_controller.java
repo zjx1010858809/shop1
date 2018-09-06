@@ -49,6 +49,11 @@ public class address_controller {
 		aservice.editaddr(ad);
 		return new JsonUtil(1, "");
 	}
+	@RequestMapping("deladdr")
+	public @ResponseBody JsonUtil deladdr(Integer id) {
+		aservice.deladdr(id);
+		return new JsonUtil(1, "");
+	}
 	
 
 }

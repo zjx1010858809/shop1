@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -144,7 +143,7 @@ public class user_controller {
 		}
 		return new JsonUtil(0,"");
 	}
-	@RequestMapping("ucut")
+	@RequestMapping("uout")
 	public String ucut(HttpSession session) {
 		session.removeAttribute("user");
 		return "redirect:product_index";

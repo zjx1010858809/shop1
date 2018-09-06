@@ -83,7 +83,7 @@
 													<a href="product_single?id=${r.id}">${r.fullname}</a>
 												</h4>
 												<div class="grid-price mt-2">
-													<span class="money ">$${r.nowprice}</span>
+													<span class="money ">¥${r.nowprice}</span>
 												</div>
 											</div>
 										</div>
