@@ -19,6 +19,8 @@ public class product_controller {
 	
 	@RequestMapping("product_index")
 	public String selectall(SearchInfo info,ModelMap mv) {
+		System.out.println("1"+info.getTxt());
+		System.out.println("2"+info.getWhere());
 		mv.put("txt",info.getTxt());
 		mv.put("productlist",service.selectall(info));
 		mv.put("typelist",tservice.select());

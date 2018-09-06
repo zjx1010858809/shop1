@@ -28,9 +28,15 @@ public class SearchInfo {
 		return txt;
 	}
 	public void setTxt(String txt) {
-		this.txt = txt;
-		where=" where fullname like '%"+txt+"%' ";
+		
+		if(txt==null||txt=="") {
+			where=" where status=0 ";
+		}else {
+			this.txt = txt;
+			where=" where fullname like '%"+txt+"%' and status=0 ";
+		}
 	}
+	
 	public String getWhere() {
 		return where;
 	}
