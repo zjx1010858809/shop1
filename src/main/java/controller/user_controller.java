@@ -107,7 +107,7 @@ public class user_controller {
 	public @ResponseBody JsonUtil orders(@RequestBody ArrayList<shopcar> shopcar,HttpSession session) {
 		user u=(entity.user) session.getAttribute("user");
 		if(u!=null) {
-			
+			session.setAttribute("myaddress",aservice.select(u.getId()));
 			if(oservice.orderss(shopcar,u,session)) {
 				return new JsonUtil(1, "购买成功！");
 			}else {
@@ -122,7 +122,6 @@ public class user_controller {
 	@RequestMapping("user_pay")
 	public @ResponseBody JsonUtil payfor(String code,Integer id) {
 		if(oservice.payfor(1,code)) {
-			System.out.println(code);
 			oservice.addr(id, code);
 			return new JsonUtil(1, "支付成功！");
 		}else {

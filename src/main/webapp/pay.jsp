@@ -38,7 +38,29 @@
 	</div>
 	<!--内容-->
 <div id="contentCon">
-
+<div class="right" style="width: 1200px;">
+	<h2>选择地址</h2>
+<c:forEach items="${sessionScope.myaddress}" var="r">
+        <hr>
+        <div>
+        <ul class="rem2" addr_id="${r.id}" style="width: 1200px;size: 40px;">
+        	<li style="margin-left: 50px;width: 80px;">${r.name}</li>
+            <li style="margin-left: 30px;width: 100px;">${r.tel}</li>
+            <li style="margin-left: 80px;width: 120px;">
+                <p>${r.zone}</p>
+            </li>
+            <li style="margin-left: 70px;width: 120px;">
+                <p>${r.addr}</p>
+            </li>
+            <li style="margin-left: 60px;width: 60px;">
+               	<input class="chk" type="radio" name="addr">
+            </li>
+        </ul>
+        </div>
+        <hr>
+        </c:forEach>
+</div>
+<hr>
 
 
 	<div>
@@ -50,7 +72,7 @@
         <ol>
         	<p>应付：</p>
             <span style="margin-top: 8px;">¥${sessionScope.nowamount}</span>
-            <button onclick="payfor();" style="margin-top: 60px;" class="layui-btn layui-btn-normal layui-btn-radius">支付</button>
+            <button onclick="payfor();" style="margin-top: 60px;" class="layui-btn layui-btn-danger">支付</button>
         </ol>
     </div>
     <ul>

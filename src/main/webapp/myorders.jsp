@@ -72,13 +72,13 @@
         <ol>
             <p>${r.date}&nbsp;&nbsp;&nbsp;&nbsp;订单号：${r.code}</p>
             <c:if test="${r.status==0}">
-                <button onclick="topay(${r.id});" type="button" style="float: right;margin-top: 10px;">去支付</button>
+                <button onclick="topay(${r.id});" type="button" style="float: right;margin-top: 10px;" class="layui-btn layui-btn-danger">去支付</button>
             </c:if>
             <c:if test="${r.status==1}">
                 <a style="float: right;width:100px; margin-top: 10px;">等待发货</a>
             </c:if>
             <c:if test="${r.status==2}">
-                <button onclick="sure(${r.id});" type="button" style="float: right;margin-top: 10px;">确认收货</button>
+                <button onclick="sure(${r.id});" type="button" style="float: right;margin-top: 10px;" class="layui-btn">确认收货</button>
             </c:if>
             <c:if test="${r.status==3}">
                 <a <%-- onclick="assess(${r.id});" --%> style="float: right;width:100px;margin-top: 10px;">订单已完成</a>
