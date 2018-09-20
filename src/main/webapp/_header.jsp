@@ -49,16 +49,7 @@ function uout(){
 	});
 }
 	    </script>
-<!--返回时停留在之前浏览位置，有了这个可以清楚位置-->
-	<!-- <script>
-		addEventListener("load", function () {
-			setTimeout(hideURLbar, 0);
-		}, false);
 
-		function hideURLbar() {
-			window.scrollTo(0, 1);
-		}
-	</script> -->
 </head>
 <body>
 <header>
@@ -77,7 +68,7 @@ function uout(){
 				
 					<h1 class="logo-w3layouts">
 						<a class="navbar-brand" href="product_index">
-							JiaXiangShop </a>
+							EASYSHOP </a>
 					</h1>
 				</div>
 
