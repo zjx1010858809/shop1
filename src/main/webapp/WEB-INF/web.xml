@@ -16,20 +16,6 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<!-- <filter>
-		<filter-name>loginFilter</filter-name>
-		<filter-class>filter.loginfilter</filter-class>
-		<init-param>
-			<param-name>ex</param-name>
-			<param-value>c,.css,.jpg,.JPEG,.png,.js,.eot,.svg,ttf,.woff,login.jsp</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>loginFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
-	
-	
 	<servlet>
 <servlet-name>randomCode</servlet-name>
 <servlet-class>servlet.RandomCode</servlet-class>
